@@ -1,0 +1,16 @@
+main{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+form{
+    background: #e6e9f0;
+    height: 100vh;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
