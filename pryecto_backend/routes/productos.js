@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/allProducts', getAllProductos);
 router.get('/myProduct/:id', getProducto);
 router.post('/create', createProducto);
-router.post ('carrito/:id',añadirCarrito)
+router.post ('/carrito/:id',añadirCarrito)
 router.put('/update/id', updateProducto);
 router.delete('/delete/:id', deleteProducto);
 

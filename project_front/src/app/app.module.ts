@@ -7,25 +7,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 import { AuthModule } from './auth/auth.module';
-
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {TiendaModule} from './tienda/tienda.module'
+import { ComponentsModule } from './components/components.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModuleModule,
     AuthModule,
-    BrowserAnimationsModule
+    TiendaModule,
+    BrowserAnimationsModule,
+    ComponentsModule
+    
   ],
   providers: [
     {
