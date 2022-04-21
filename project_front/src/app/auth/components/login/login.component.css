@@ -1,16 +1,33 @@
-main{
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-}
-
-form{
-    background: #e6e9f0;
-    height: 100vh;
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+section{
+    width:30%;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px grey;
+    margin: auto;
+    padding: 0;
+    margin-top: 90px;
 
 }
+
+h1{
+    text-align: center;
+    font-size: 40px;
+}
+h4{ 
+    text-align: center;
+    font-size: 20px;
+}
+
+input{
+    margin-left: 30px;
+}
+button{
+    margin-left:100px;
+    width: 100px;
+}
+:host ::ng-deep .p-password {
+    margin-left: 30px;
+    margin-bottom: 30px;
+  }
+
 

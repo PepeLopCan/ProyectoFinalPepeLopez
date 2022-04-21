@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  show:boolean = true;
   value3: string;
   constructor() {
-    this.value3 = "";
+    this.value3 = "12345";
    }
 
   ngOnInit(): void {
+    this.value3 = "12345";
   }
 
 }

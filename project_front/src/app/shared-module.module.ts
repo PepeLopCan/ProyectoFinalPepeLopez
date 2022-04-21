@@ -23,6 +23,8 @@ import {TreeModule} from 'primeng/tree';
 import {TreeNode} from 'primeng/api';
 import {MenuModule} from 'primeng/menu';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {BadgeModule} from 'primeng/badge';
+import { MenubarModule } from 'primeng/menubar';
 
 
 
@@ -50,7 +52,9 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     AccordionModule,
     ChipsModule,
     MenuModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    MenubarModule,
+    BadgeModule
   ],
   exports: [
     TableModule,
@@ -73,7 +77,9 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     TreeModule,
     MenuModule,
     BreadcrumbModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    MenubarModule,
+    BadgeModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
