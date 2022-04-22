@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselService } from 'src/app/shared/services/carousel.service';
 import { Carousel } from 'src/app/shared/modales/carousel';
+import { ProductosService } from 'src/app/shared/services/productos/productos.service';
+import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,8 @@ import { Carousel } from 'src/app/shared/modales/carousel';
 export class HomeComponent implements OnInit {
 
   carousel:Carousel[] =[];
-  constructor(private carouselService:CarouselService) {
+  product:Product[]=[];
+  constructor(private carouselService:CarouselService, private productoService:ProductosService) {
    }
 
   ngOnInit(): void {
@@ -18,6 +21,10 @@ export class HomeComponent implements OnInit {
     this.carouselService.getCarousel().then(data =>{
       this.carousel = data;
       console.log()
+    })
+
+    this.productoService.getProducts().then(data =>{
+      this.product = data;
     })
   }
 
