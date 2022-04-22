@@ -1,13 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MiPerfilComponent } from './MiPerfil/mi-perfil/mi-perfil.component';
-import { MyProductoComponent } from './MyProducto/my-producto/my-producto.component';
-import { ShopComponent } from './shop/shop/shop.component';
-import { ModalEditUsuarioComponent } from './MiPerfil/component/modal-edit-usuario/modal-edit-usuario.component';
-import { TiendaComponent } from './tienda.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './containers/home/home.component';
+import { MiPerfilComponent } from '../tienda/containers/MiPerfil/mi-perfil/mi-perfil.component';
+import { MyProductoComponent } from '../tienda/containers/MyProducto/my-producto/my-producto.component';
+import {ShopComponent} from '../tienda/containers/shop/shop/shop.component'
+import { ModalEditUsuarioComponent } from '../tienda/containers/MiPerfil/component/modal-edit-usuario/modal-edit-usuario.component';
 import { ComponentsModule } from '../components/components.module';
-
+import { CarouselService } from '../shared/services/carousel.service';
+import { SharedModuleModule } from '../shared-module.module';
 
 
 @NgModule({
@@ -16,14 +16,15 @@ import { ComponentsModule } from '../components/components.module';
     MiPerfilComponent,
     MyProductoComponent,
     ShopComponent,
-    ModalEditUsuarioComponent,
-    TiendaComponent,
+    ModalEditUsuarioComponent
+    
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    SharedModuleModule
   ],
-  providers: [],
+  providers: [CarouselService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TiendaModule { }
