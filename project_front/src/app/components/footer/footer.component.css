@@ -1,0 +1,22 @@
+footer {
+    background-color: #383838;
+  }
+  footer img {
+    height: 128px;
+    margin: 24px auto;
+  }
+  footer a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  footer li:hover{
+    transform: scale(1.05);
+    transition: .2s;
+    color: #68a0d2;
+  }
+  footer a i:hover{
+    transform: scale(1.05);
+    transition: .2s;
+    color:#68a0d2;
+  }
