@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "primeflex/primeflex.css";
+@import "primeng/resources/themes/saga-blue/theme.css";
+@import "primeicons/primeicons.css";
 body{
     margin:0;
     padding:0;

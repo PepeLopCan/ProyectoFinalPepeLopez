@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { producto } from '../../modales/producto-modal';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { Product } from '../../interfaces/product';
 
 const base_url = environment.base_url;
 @Injectable({
@@ -47,4 +48,15 @@ export class ProductosService {
   deleteProducto(id:string):Observable<any>{
     return this.http.delete<producto>(`${base_url}/delete/`+ id)
   }
+
+  getProductoos():Observable<Product[]>{
+    return this.http.get<Product>("../../../../assets/archivosConfig/produ.json").pipe(map((u) => u.data))
+  }
+
+  getProducts() {
+    return this.http.get<any>("../../../../assets/archivosConfig/produ.json")
+    .toPromise()
+    .then(res => <Product[]>res.data)
+    .then(data => { return data; });
+}
 }

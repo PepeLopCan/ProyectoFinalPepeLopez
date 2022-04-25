@@ -25,6 +25,13 @@ import {MenuModule} from 'primeng/menu';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {BadgeModule} from 'primeng/badge';
 import { MenubarModule } from 'primeng/menubar';
+import {CheckboxModule} from 'primeng/checkbox';
+import {CarouselModule} from 'primeng/carousel';
+import {DataViewModule} from 'primeng/dataview';
+import {CardModule} from 'primeng/card';
+
+
+
 
 
 
@@ -54,7 +61,11 @@ import { MenubarModule } from 'primeng/menubar';
     MenuModule,
     OverlayPanelModule,
     MenubarModule,
-    BadgeModule
+    BadgeModule,
+    CheckboxModule,
+    CarouselModule,
+    DataViewModule,
+    CardModule
   ],
   exports: [
     TableModule,
@@ -79,7 +90,11 @@ import { MenubarModule } from 'primeng/menubar';
     BreadcrumbModule,
     OverlayPanelModule,
     MenubarModule,
-    BadgeModule
+    BadgeModule,
+    CheckboxModule,
+    CarouselModule,
+    DataViewModule,
+    CardModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
