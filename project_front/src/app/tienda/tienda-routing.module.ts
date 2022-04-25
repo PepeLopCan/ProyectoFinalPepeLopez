@@ -20,8 +20,6 @@ const routes: Routes = [
       { path: 'editUser/:id',component: ModalEditUsuarioComponent}    
     ]
   }
- 
-
 ]
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],
