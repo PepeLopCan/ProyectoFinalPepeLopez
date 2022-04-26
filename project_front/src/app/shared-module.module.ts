@@ -31,6 +31,7 @@ import {DataViewModule} from 'primeng/dataview';
 import {CardModule} from 'primeng/card';
 import {ToastModule} from 'primeng/toast';
 import {RatingModule} from 'primeng/rating';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 
@@ -71,7 +72,8 @@ import {RatingModule} from 'primeng/rating';
     DataViewModule,
     CardModule,
     ToastModule,
-    RatingModule
+    RatingModule,
+    InputNumberModule
   ],
   exports: [
     TableModule,
@@ -102,7 +104,8 @@ import {RatingModule} from 'primeng/rating';
     DataViewModule,
     CardModule,
     ToastModule,
-    RatingModule
+    RatingModule,
+    InputNumberModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

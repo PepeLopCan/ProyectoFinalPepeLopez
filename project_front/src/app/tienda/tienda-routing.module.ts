@@ -14,7 +14,7 @@ const routes: Routes = [
 
       { path:'home',component:HomeComponent },
       { path: 'myperfil',component: MiPerfilComponent},
-      { path: 'myproduct/:id',component: MyProductoComponent},
+      { path: 'myproduct',component: MyProductoComponent},
       { path: 'shop',component: ShopComponent},
       { path: 'editUser/:id',component: ModalEditUsuarioComponent}    
     

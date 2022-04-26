@@ -41,9 +41,9 @@
                     </div>
                     <div class="product-list-action">
                         <span class="product-price">${{product.price}}</span>
-                        <p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
-                        <span [class]="'product-badge status- ' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
-                    </div>
+                        <p-button icon="pi pi-shopping-cºart" label="Add to Cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" [ngClass]="{'OUTOFSTOCK':product.inventoryStatus ==='OUTOFSTOCK','INSTOCK':product.inventoryStatus ==='INSTOCK','LOWSTOCK':product.inventoryStatus ==='LOWSTOCK' }">{{product.inventoryStatus}}</span>
+                    </div> 
                 </div>
             </div>
         </ng-template>
@@ -55,7 +55,7 @@
                             <i class="pi pi-tag product-category-icon"></i>
                             <span class="product-category">{{product.category}}</span>
                         </div>
-                        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" [ngClass]="{'OUTOFSTOCK':product.inventoryStatus ==='OUTOFSTOCK','INSTOCK':product.inventoryStatus ==='INSTOCK','LOWSTOCK':product.inventoryStatus ==='LOWSTOCK' }">{{product.inventoryStatus}}</span>
                     </div>
                     <div class="product-grid-item-content">
                         <img [src]="'../../../../../assets/Surf/' + product.image" [alt]="product.name"/>

@@ -1,1 +1,20 @@
-<p>my-producto works!</p>
+<section class="container product my-5 pt-5">
+    <div class="row mt-5">
+        <div class="col-lg-5 col-md-12 col-12">
+            <img class="img-fluid w-100" src="../../../../../assets/Surf/13.jpg" alt="">
+        </div>
+        <div class="col-lg-5 col-md-12 col-12">
+            <h6> Tabla de surf</h6>
+            <h3>SurfBoard Fishing</h3>
+            <h2>200€</h2> 
+            <p-rating [ngModel]="val3" [cancel]="false"></p-rating>
+                <label for="vertical" style="display: block; margin-bottom:20px;">Cantidad</label>
+                <p-inputNumber [(ngModel)]="value19" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                </p-inputNumber>
+                <p-button class="ml-2"label="Añadir al carrito" icon="pi pi-shopping-cart" iconPos="right"></p-button>
+        </div>
+    </div> 
+
+
+</section>

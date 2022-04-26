@@ -59,7 +59,7 @@
         width: 100%;
     
         img {
-            width: 150px;
+            width: 1050px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
             margin-right: 2rem;
         }
@@ -82,6 +82,16 @@
         .product-list-action {
             display: flex;
             flex-direction: column;
+
+            .OUTOFSTOCK{
+              color:red;
+            }
+            .INSTOCK{
+              color:green;
+            }
+            .LOWSTOCK{
+              color:yellow;
+            }
         }
     
         .p-button {
@@ -98,16 +108,37 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            .OUTOFSTOCK{
+              background: #FFCDD2;
+              color: #c63737;
+              padding:2px 5px ;
+              border-radius: 5px;
+            }
+            .INSTOCK{
+              background: #C8E6C9;
+              color: #256029;
+              padding:2px 5px ;
+              border-radius: 3px;
+            }
+            .LOWSTOCK{
+              background: #FEEDAF;
+              color: #8a5340;
+              padding:2px 5px ;
+              border-radius: 3px;
+            }
+        }
+            
         }
     
-        img {
-            width: 60%;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-            margin: 2rem 0;
-        }
-    
+
         .product-grid-item-content {
             text-align: center;
+            img {
+              width: 50%;
+              box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+              margin: 2rem 0;
+          }
         }
     
         .product-price {
@@ -115,12 +146,12 @@
             font-weight: 600;
         }
     }
-}
+
+
+
 
 .card {
     padding: 2rem;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
     margin-bottom: 2rem;
 }
 
@@ -130,7 +161,7 @@
 		align-items: center;
 
 		img {
-			width: 75%;
+			width: 50%;
 			margin: 2rem 0;
 		}
 

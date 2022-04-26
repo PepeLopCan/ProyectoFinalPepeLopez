@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-producto.component.css']
 })
 export class MyProductoComponent implements OnInit {
-
-  constructor() { }
+  value19: number = 0;
+  val3:number
+  constructor() {
+    this.val3 =3;
+   }
 
   ngOnInit(): void {
   }
