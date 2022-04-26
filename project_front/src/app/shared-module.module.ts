@@ -29,6 +29,9 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {CarouselModule} from 'primeng/carousel';
 import {DataViewModule} from 'primeng/dataview';
 import {CardModule} from 'primeng/card';
+import {ToastModule} from 'primeng/toast';
+
+
 
 
 
@@ -65,7 +68,8 @@ import {CardModule} from 'primeng/card';
     CheckboxModule,
     CarouselModule,
     DataViewModule,
-    CardModule
+    CardModule,
+    ToastModule
   ],
   exports: [
     TableModule,
@@ -94,7 +98,8 @@ import {CardModule} from 'primeng/card';
     CheckboxModule,
     CarouselModule,
     DataViewModule,
-    CardModule
+    CardModule,
+    ToastModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -7,10 +7,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModuleModule } from '../shared-module.module';
 
 
+
 @NgModule({
   declarations: [
     FooterComponent,
     NavbarComponent,
+
   
   ],
   exports:[

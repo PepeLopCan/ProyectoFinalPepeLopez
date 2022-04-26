@@ -8,6 +8,10 @@ import { LoginComponent } from './auth/components/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'tienda',
+    loadChildren: () => import('./tienda/tienda.module').then(mod => mod.TiendaModule)
+  },
   {path: 'login', component:LoginComponent}
 ];
 
