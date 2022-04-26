@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { ProductosService } from 'src/app/shared/services/productos/productos.service';
+import { producto } from 'src/app/shared/modales/producto-modal';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -7,7 +9,9 @@ import {MenuItem} from 'primeng/api';
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[];
-  constructor() {
+  producto:producto[]=[];
+    dialogService: any;
+  constructor(private productoService:ProductosService) {
      this.items = [
             {
                 label:'home',
@@ -53,9 +57,8 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
-
-    
+  
   }
+
 
 }

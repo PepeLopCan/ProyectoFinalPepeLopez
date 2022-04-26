@@ -7,11 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 import { AuthModule } from './auth/auth.module';
-import {TiendaModule} from './tienda/tienda.module'
+import { TiendaModule} from './tienda/tienda.module'
 import { ComponentsModule } from './components/components.module';
 
 
-
+   
 
 
 @NgModule({
