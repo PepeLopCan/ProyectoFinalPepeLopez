@@ -49,9 +49,6 @@ export class ProductosService {
     return this.http.delete<producto>(`${base_url}/delete/`+ id)
   }
 
-  getProductoos():Observable<Product[]>{
-    return this.http.get<Product>("../../../../assets/archivosConfig/produ.json").pipe(map((u) => u.data))
-  }
 
   getProducts() {
     return this.http.get<any>("../../../../assets/archivosConfig/produ.json")

@@ -1,5 +1,4 @@
 export interface Product {
-    data: any;
     id?:string;
     code?:string;
     name?:string;
@@ -11,3 +10,6 @@ export interface Product {
     image?:string;
     rating?:number;
 }
+export interface ProductDTO {
+    data: Product[];
+  }

@@ -9,6 +9,7 @@ import { ComponentsModule } from '../components/components.module';
 import { CarouselService } from '../shared/services/carousel.service';
 import { SharedModuleModule } from '../shared-module.module';
 import { TiendaRoutingModule } from './tienda-routing.module';
+import { ProductserviceService } from '../shared/productservice.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { TiendaRoutingModule } from './tienda-routing.module';
     SharedModuleModule,
     TiendaRoutingModule
   ],
-  providers: [CarouselService],
+  providers: [CarouselService,ProductserviceService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TiendaModule { }
