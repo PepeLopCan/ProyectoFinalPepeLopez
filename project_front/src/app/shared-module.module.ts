@@ -32,6 +32,8 @@ import {CardModule} from 'primeng/card';
 import {ToastModule} from 'primeng/toast';
 import {RatingModule} from 'primeng/rating';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
 
 
 
@@ -73,7 +75,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     CardModule,
     ToastModule,
     RatingModule,
-    InputNumberModule
+    InputNumberModule,
+    AvatarModule
   ],
   exports: [
     TableModule,
@@ -105,7 +108,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     CardModule,
     ToastModule,
     RatingModule,
-    InputNumberModule
+    InputNumberModule,
+    AvatarModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
