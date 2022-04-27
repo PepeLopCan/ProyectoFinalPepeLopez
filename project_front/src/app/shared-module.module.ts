@@ -32,8 +32,18 @@ import {CardModule} from 'primeng/card';
 import {ToastModule} from 'primeng/toast';
 import {RatingModule} from 'primeng/rating';
 import {InputNumberModule} from 'primeng/inputnumber';
-
-
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+import {CalendarModule} from 'primeng/calendar';
+import {SliderModule} from 'primeng/slider';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DialogModule} from 'primeng/dialog';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {ToolbarModule} from 'primeng/toolbar';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import {ChartModule} from 'primeng/chart';
 
 
 
@@ -73,7 +83,19 @@ import {InputNumberModule} from 'primeng/inputnumber';
     CardModule,
     ToastModule,
     RatingModule,
-    InputNumberModule
+    InputNumberModule,
+    AvatarModule,
+    AvatarGroupModule,
+    CalendarModule,
+    SliderModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    DialogModule,
+    ProgressBarModule,
+    ToolbarModule,
+    RadioButtonModule,
+    InputTextareaModule,
+    ChartModule
   ],
   exports: [
     TableModule,
@@ -105,7 +127,19 @@ import {InputNumberModule} from 'primeng/inputnumber';
     CardModule,
     ToastModule,
     RatingModule,
-    InputNumberModule
+    InputNumberModule,
+    AvatarModule,
+    AvatarGroupModule,
+    CalendarModule,
+    SliderModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    DialogModule,
+    ProgressBarModule,
+    ToolbarModule,
+    RadioButtonModule,
+    InputTextareaModule,
+    ChartModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

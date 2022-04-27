@@ -1,0 +1,57 @@
+<section id="cart-container" class="container my-5">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Eliminar</td>
+                    <td>Imagen</td>
+                    <td>Producto</td>
+                    <td>Precio</td>
+                    <td>Catidad</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="pi pi-trash"></i></td>
+                    <td><img src="../../../../../assets/Surf/11.jpg" alt=""></td>
+                    <td>
+                        <h5>Tabla de surf</h5>
+                    </td>
+                    <td><h5>200€</h5></td>
+                    <td> <p-inputNumber [(ngModel)]="value19" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                        decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                        </p-inputNumber></td>
+                    <td><h5>200€</h5></td>
+            </tbody>
+        </table>
+    </section>
+    <section id="cart-bottom" class="container">
+        <div class="row">
+            <div class="cupon col-lg-6 col-md-6 col-12 mb-4">
+                <div>
+                    <h5>CUPON</h5>
+                    <p>Introduce tu cupon</p>
+                    <input type="text" pInputText>
+                    <p-button label="Aplicar" class="ml-1"></p-button>
+                </div>
+            </div>
+            <div class="total col-lg-6 col-md-6 col-12 mb-4">
+                    <div>
+                        <h5>CARRITO TOTAL</h5>
+                        <div class="d-flex justify-content-between">
+                            <h6>Subtotal</h6>
+                            <p>200€</p>
+                        </div>
+                        <hr class="second-hr">
+                        <div class="d-flex justify-content-between">
+                            <h6>Total</h6>
+                            <p>200€</p>
+                        </div>
+                        <p-button label="Comprar" pRipple (click)="showSuccess()"class="ml-1"></p-button>
+                        <p-toast position="top-right"></p-toast>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+

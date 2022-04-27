@@ -1,4 +1,7 @@
-
+.r{
+    position:relative;
+      min-height:100%; 
+}
 .carousel-caption {
     position: absolute;
     top: 54%;
@@ -99,6 +102,14 @@
    margin-top: 3px;
    line-height: 20px;
    font-weight: 600;
+}
+:host::ng-deep .p-button{
+    background-color: rgb(24, 173, 210);
+    border: 1px solid rgb(24, 173, 210);
+}
+:host::ng-deep .p-button:hover{
+    background-color: rgb(24, 160, 210);
+    border: 1px solid rgb(24, 160, 210);
 }
 
 

@@ -16,43 +16,41 @@ export class NavbarComponent implements OnInit {
             {
                 label:'home',
                 icon:'pi pi-fw pi-home',
-                routerLink: ['/pagename'],
+                routerLink: ['/tienda/home'],
+                styleClass: 'menucus'
             },
             {
                 label:'Productos',
                 items:[
                     {
-                        label:'Compresores',
-                        icon:'pi pi-fw pi-align-left',
-                        routerLink: ['/pagename'],
+                        label:'BodyBoard',
+                        icon:'fa-solid fa-water',
+                        routerLink: ['/tienda/shop'],
+                        styleClass: 'menucus'
                     },
                     {
-                        label:'Magnetos',
-                        icon:'pi pi-fw pi-align-right',
-                        routerLink: ['/pagename'],
+                        label:'FishBoard',
+                        icon:'fa-solid fa-fish',
+                        routerLink: ['/tienda/shop'],
+                        styleClass: 'menucus'
                     },
                     {
-                        label:'Diferenciales',
-                        icon:'pi pi-fw pi-align-center',
-                        routerLink: ['/pagename'],
+                        label:'LongBoard',
+                        icon:'fa-solid fa-ruler-vertical',
+                        routerLink: ['/tienda/shop'],
+                        styleClass: 'menucus'
                     },
                 ]
             },
             {
                 label:'Sobre Nosotros',
+                styleClass: 'menucus'
             },
             {
                 label:'Contacto',
                 icon:'pi pi-fw pi-calendar',
+                styleClass: 'menucus'
             },
-            {
-              icon:'pi pi-fw pi-user',
-              items:[
-                  {
-                      label:'MyProfile',
-                  }
-              ]
-          },
         ];
    }
 
