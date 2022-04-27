@@ -3,12 +3,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/shared/modales/usuario-modal';
 import { UsuariosService } from 'src/app/shared/services/usuarios/usuarios.service';
 import { Router } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 @Component({
   selector: 'app-modal-edit-usuario',
   templateUrl: './modal-edit-usuario.component.html',
-  styleUrls: ['./modal-edit-usuario.component.css']
+  styleUrls: ['./modal-edit-usuario.component.css'],
+  providers: [MessageService]
 })
 export class ModalEditUsuarioComponent implements OnInit {
 
@@ -23,7 +24,8 @@ export class ModalEditUsuarioComponent implements OnInit {
     private primengConfig: PrimeNGConfig,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
-    private userService:UsuariosService) {
+    private userService:UsuariosService,
+    private messageService: MessageService) {
       
       /*this.data = this.config.data
       this.formEdit = new FormGroup({
@@ -43,4 +45,12 @@ export class ModalEditUsuarioComponent implements OnInit {
     })
 
 }
+showError() {
+  this.messageService.add({severity:'error', summary: 'Error', detail: 'Usuario Borrado'});
+}
+showSuccess() {
+  this.messageService.add({severity:'success', summary: 'Success', detail: 'Message Content'});
+}
+
+
 }

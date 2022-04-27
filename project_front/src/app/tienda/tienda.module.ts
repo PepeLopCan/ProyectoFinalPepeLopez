@@ -10,6 +10,8 @@ import { CarouselService } from '../shared/services/carousel.service';
 import { SharedModuleModule } from '../shared-module.module';
 import { TiendaRoutingModule } from './tienda-routing.module';
 import { ProductserviceService } from '../shared/productservice.service';
+import { ShopCartComponent } from './containers/carrito/shop-cart/shop-cart.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { ProductserviceService } from '../shared/productservice.service';
     MiPerfilComponent,
     MyProductoComponent,
     ShopComponent,
-    ModalEditUsuarioComponent
+    ModalEditUsuarioComponent,
+    ShopCartComponent
     
   ],
   imports: [

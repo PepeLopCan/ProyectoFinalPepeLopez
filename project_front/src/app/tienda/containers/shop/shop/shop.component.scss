@@ -59,7 +59,7 @@
         width: 100%;
     
         img {
-            width: 1050px;
+            width: 10%;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
             margin-right: 2rem;
         }
@@ -84,13 +84,22 @@
             flex-direction: column;
 
             .OUTOFSTOCK{
-              color:red;
+              background: #FFCDD2;
+              color: #c63737;
+              padding:2px 5px ;
+              border-radius: 5px;
             }
             .INSTOCK{
-              color:green;
+              background: #C8E6C9;
+              color: #256029;
+              padding:2px 5px ;
+              border-radius: 3px;
             }
             .LOWSTOCK{
-              color:yellow;
+              background: #FEEDAF;
+              color: #8a5340;
+              padding:2px 5px ;
+              border-radius: 3px;
             }
         }
     
@@ -138,6 +147,11 @@
               width: 50%;
               box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
               margin: 2rem 0;
+          }
+          img:hover{
+            transform:scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+            transition:.2s;
           }
         }
     

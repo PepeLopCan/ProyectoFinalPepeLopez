@@ -6,7 +6,7 @@ import { MiPerfilComponent } from '../tienda/containers/MiPerfil/mi-perfil/mi-pe
 import { MyProductoComponent } from '../tienda/containers/MyProducto/my-producto/my-producto.component';
 import{ShopComponent} from '../tienda/containers/shop/shop/shop.component'
 import { ModalEditUsuarioComponent } from '../tienda/containers/MiPerfil/component/modal-edit-usuario/modal-edit-usuario.component';
-
+import { ShopCartComponent } from './containers/carrito/shop-cart/shop-cart.component';
 
 
 const routes: Routes = [
@@ -16,7 +16,8 @@ const routes: Routes = [
       { path: 'myperfil',component: MiPerfilComponent},
       { path: 'myproduct',component: MyProductoComponent},
       { path: 'shop',component: ShopComponent},
-      { path: 'editUser/:id',component: ModalEditUsuarioComponent}    
+      { path: 'editUser/:id',component: ModalEditUsuarioComponent},
+      { path: 'carrito',component: ShopCartComponent}    
     
 
 ];

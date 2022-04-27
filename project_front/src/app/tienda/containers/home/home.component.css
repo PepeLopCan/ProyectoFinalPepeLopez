@@ -1,4 +1,7 @@
-
+.r{
+    position:relative;
+      min-height:100%; 
+}
 .carousel-caption {
     position: absolute;
     top: 54%;

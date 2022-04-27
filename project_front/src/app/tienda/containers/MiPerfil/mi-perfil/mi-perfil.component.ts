@@ -36,7 +36,7 @@ show() {
 
   modal.onClose.subscribe((product: boolean) =>{
       if (product) {
-          this.messageService.add({severity:'info', summary: 'Product Selected'});
+        this.messageService.add({severity:'info', summary: 'Info', detail: 'Perfil Actualizado'});
       }
   });
 }
