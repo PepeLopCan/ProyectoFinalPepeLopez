@@ -42,7 +42,7 @@
                     <div class="product-list-action">
                         <span class="product-price">${{product.price}}</span>
                         <p-button icon="pi pi-shopping-cºart" (click)="showInfo()" label="Add to Cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
-                        <button pButton pRipple type="button" label="Ver detalle" class="p-button-warning"></button>
+                        <p-button label="Ver detalle" class="p-button-warning" routerLink="/tienda/myproduct"></p-button>
                         <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" [ngClass]="{'OUTOFSTOCK':product.inventoryStatus ==='OUTOFSTOCK','INSTOCK':product.inventoryStatus ==='INSTOCK','LOWSTOCK':product.inventoryStatus ==='LOWSTOCK' }">{{product.inventoryStatus}}</span>
                         <p-toast position="top-right"></p-toast>
                     </div> 
@@ -67,7 +67,7 @@
                     <div class="product-grid-item-bottom">
                         <span class="product-price">${{product.price}}</span>
                         <p-button pRipple (click)="showInfo()" icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
-                        <button pButton pRipple type="button" label="Ver detalle" class="p-button-warning"></button>
+                        <p-button label="Ver detalle" class="p-button-warning" routerLink="/tienda/myproduct"></p-button>
                         <p-toast position="top-right"></p-toast>
                     </div>
                 </div>
