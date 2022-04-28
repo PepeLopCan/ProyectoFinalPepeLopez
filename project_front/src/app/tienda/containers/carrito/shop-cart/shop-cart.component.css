@@ -19,7 +19,7 @@
     padding: 6px 0;
 }
 #cart-container table  td{
-    border:  1px solid rgb(118, 118, 118);
+    border-radius:  1px solid rgb(170, 170, 170);
     text-align: center;
 }
 
@@ -47,7 +47,7 @@
 }
 #cart-bottom .cupon>div,
 #cart-bottom .total>div{
-    border: 1px solid rgb(88, 88, 88);
+    border: 1px solid rgb(170, 170, 170);
 }
 
 
