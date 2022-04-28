@@ -1,20 +1,22 @@
-
-            <div class="bar">
-                <p-chart type="bar"  width="700px" height="500px" [responsive]="false" [data]="basicData" [options]="basicOptions"></p-chart>
+    <div class="container-fluid">
+        <div class="row m-2 justify-content-center">
+            <div class="col-6">
+                <div class="bar">
+                    <p-chart type="bar" position="absolute" width="700px" height="500px" [responsive]="false" [data]="basicData" [options]="basicOptions"></p-chart>
+                </div>
             </div>
-
-                <p-chart class="donut1" type="doughnut" [data]="data" [options]="chartOptions"  width="500px" height="500px"></p-chart>
-        
-  
+            <div class="col-6">
+                <div class="donut">
+                    <p-chart class="donut1" type="doughnut" [data]="data" [options]="chartOptions"  position="absolute" width="500px" height="510px"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>
 <p-toast></p-toast>
 <div class="card">
     <p-toolbar styleClass="p-mb-4">
         <ng-template pTemplate="left">
             <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"></button>
-        </ng-template>
-        <ng-template pTemplate="right">
-            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
-            <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
         </ng-template>
 </p-toolbar>
 <p-table #dt [value]="products" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"

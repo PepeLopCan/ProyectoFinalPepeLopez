@@ -1,27 +1,39 @@
 
 
-
-        .bar{
-            background-color: rgb(244, 244, 244);
-            background-clip: border-box;
-            border: 1px solid rgba(0,0,0,.125);
-            border-radius: 0.25rem;
-            width:750px;
-            height:500px;
-        }
-       
-                .donut1{
-                    width:200px;
-                    height:200px;
-                }
+.container-fluid{
+    margin-left:200px;
+    .bar{
+        background-color: rgb(244, 244, 244);
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: 0.25rem;
+        width:720px;
+        padding:0;
+        margin: 0;
+        height:510px;
+        -webkit-box-shadow: 0 10px 5px #888888;
+        -moz-box-shadow: 0 10px 5px #888888;
+        box-shadow: 0 10px 5px #888888;
+    }
+    .donut{
+        background-color: rgb(244, 244, 244);
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: 0.25rem;
+        width:500px;
+        height:510px;
+        -webkit-box-shadow: 0 10px 5px #888888;
+        -moz-box-shadow: 0 10px 5px #888888;
+        box-shadow: 0 10px 5px #888888;
+    }
+}
     
-        
-
-
-
-
+       
 .card{
-    margin: 29px;
+    margin: 5px 19px 15px 19px;
+    -webkit-box-shadow: 0 10px 5px #888888;
+    -moz-box-shadow: 0 10px 5px #888888;
+    box-shadow: 0 10px 5px #888888;
 }
 
 :host ::ng-deep {
