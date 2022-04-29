@@ -24,11 +24,14 @@ export class ShopComponent implements OnInit {
 
     sortField: string;
 
+    stock:string;
+
 
 
   constructor(private productService: ProductserviceService, private primengConfig: PrimeNGConfig,private messageService: MessageService) {
       this.sortOrder=0;
       this.sortField="";
+      this.stock="";
    }
 
  
@@ -37,8 +40,14 @@ export class ShopComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.sortOptions = [
         {label: 'Price High to Low', value: '!price'},
-        {label: 'Price Low to High', value: 'price'}
+        {label: 'Price Low to High', value: 'price'},
+        {label: 'Categoria', value: 'category'},
+        {label: 'Stock', value: 'inventoryStatus'},
+        {label: 'Stock bajo', value: '!inventoryStatus'},
+        {label: 'Peores Valorados', value: 'rating'},
+        {label: 'Mejores Valorados', value: '!rating'},
     ];
+  
 
     this.primengConfig.ripple = true;
 }

@@ -21,9 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     precio: {
       type: Sequelize.NUMBER,
     },
+    imagen:{
+      type: Sequelize.TEXT
+    },
     usuarioId: {
       type: Sequelize.INTEGER,
     },
+    cantidad:{
+      type: Sequelize.TEXT
+    }
   });
 
   producto.associate = (models) => {
