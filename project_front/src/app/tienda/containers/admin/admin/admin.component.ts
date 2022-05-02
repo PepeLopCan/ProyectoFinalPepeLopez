@@ -30,27 +30,33 @@ export class AdminComponent implements OnInit {
 
   submitted: boolean;
 
+  stock: Array<string>=['STOCK,LOWSTOKC,OUTOFSTOCK'];
+
   constructor(private producService:ProductserviceService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService){ 
       this.productDialog=false;
-      this.submitted=false
+      this.submitted=false;
+
+  
     }
 
   ngOnInit(): void {
     this.producService.getProducts().then(data => this.products = data);
+      console.log(this.stock)
+
 
     this.basicData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
           {
               label: 'My First dataset',
-              backgroundColor: '#42A5F5',
+              backgroundColor: '#9EFFAD',
               data: [65, 59, 80, 81, 56, 55, 40]
           },
           {
               label: 'My Second dataset',
-              backgroundColor: '#FFA726',
+              backgroundColor: '#9EE2FF',
               data: [28, 48, 40, 19, 86, 27, 90]
           }
       ]
@@ -58,19 +64,19 @@ export class AdminComponent implements OnInit {
       
   };
   this.data = {
-    labels: ['A','B','C'],
+    labels: ['OUTOFSTOCK','STOCK','LOWSTOCK'],
     datasets: [
         {
-            data: [300, 50, 100],
+            data: [150, 150, 150],
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
+                "#FFCDD2",
+                "#C8E6C9",
+                "#FEEDAF"
             ],
             hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
+                "#FFCDD2",
+                "#C8E6C9",
+                "#FEEDAF"
             ]
         }
     ]
@@ -84,16 +90,15 @@ export class AdminComponent implements OnInit {
     }
 
     deleteSelectedProducts() {
-     /*  this.confirmationService.confirm({
+       this.confirmationService.confirm({
           message: 'Are you sure you want to delete the selected products?',
           header: 'Confirm',
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
               this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-              this.selectedProducts = null;
               this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
           }
-      }); */
+      }); 
   }
 
   editProduct(product: Product) {
@@ -120,8 +125,8 @@ export class AdminComponent implements OnInit {
   }
   
   saveProduct() {
-      /* this.submitted = true;
-      if (this.product.name.trim()) {
+       this.submitted = true;
+      if (this.product.name?.trim()) {
           if (this.product.id) {
               this.products[this.findIndexById(this.product.id)] = this.product;                
               this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
@@ -136,7 +141,7 @@ export class AdminComponent implements OnInit {
           this.products = [...this.products];
           this.productDialog = false;
           this.product = {};
-      } */
+      } 
   }
 
   findIndexById(id: string): number {
