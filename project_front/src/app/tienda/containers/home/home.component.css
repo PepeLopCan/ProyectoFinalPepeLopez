@@ -113,7 +113,27 @@
 }
 
 
-
+@media screen and (max-width: 576px) {
+    
+    .card h1 {
+        position:absolute;
+        font-size: 20px;
+        margin-top:310px;
+        margin-left: 20px;
+  
+    }
+    .card p {
+        visibility: hidden;
+  
+  }
+    
+    .lista li{
+        margin: 10px 0px 10px 0px;  
+    }
+    .text{
+        visibility: hidden;
+    }
+}
 
 
 
