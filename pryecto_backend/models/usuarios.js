@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
   usuarios.associate = (models) => {
     usuarios.belongsToMany(models.Groups, {
-      through: "Mis productos",
+      through: "user_product",
       as: "productos",
       foreignKey: "userId",
     });
