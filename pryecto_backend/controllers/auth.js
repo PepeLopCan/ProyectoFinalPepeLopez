@@ -1,4 +1,4 @@
-const usuario = require("../models/usuarios");
+const usuario = require("../models/usuario");
 const express = require("express");
 const { bcrypt } = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -6,35 +6,23 @@ const router = express.Router();
 const env = require("../helpers/auth");
 
 const login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    usuario
-      .findOne({
-        where: {
-          email: email,
-        },
-      })
-      .then((usuario) => {
-        if (!usuario) {
-          res.status(404).json({ msg: "Usuario no encontrado" });
-        } else {
-          if (bcrypt.compareSync(password, usuario.password)) {
-            let token = jwt.sign({ usuario: usuario }, env.secret, {
-              expiresIn: env.expires,
-            });
-            res.json({
-              ok: true,
-              usuario: usuario,
-              token: token,
-            });
-          } else {
-            res.status(401).json({ msg: "Contraseña incorrecta" });
-          }
-        }
-      });
-  } catch (error) {
-    res.status(500).json(error);
-  }
+
+    const { email,password} = req.body; 
+    const userEmail = await usuario.findOne({ where: { email }}).catch((err)=>{
+      console.log("Error ", error);
+    })
+
+    if (!userEmail)
+    return res.json({message:"El email no existe"});
+
+    if(userEmail.password !== password)
+    return res.json({message:"La password no coincide"});
+  
+    const jwtToken = jwt.sign(
+      { id: userEmail.id, email: userEmail.email },
+      env.secret
+    );
+    res.json({ message: "Logueao!", token: jwtToken });
 };
 
 const register = async (req, res) => {

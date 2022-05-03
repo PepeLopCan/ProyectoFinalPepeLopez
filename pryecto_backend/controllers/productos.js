@@ -1,33 +1,31 @@
-const producto = require("../models/productos");
+const { response } = require("express");
+const producto  = require("../models/productos");
 
-const getAllProductos = async (res, req) => {
-  try {
-    const AllProducts = await producto.findAll({
-      order: [["id", "DESC"]],
-    });
+const getAllProductos = async (req, res) => {
+     try {
+    const AllProducts = await producto.findAll()
     res.json({
       ok: true,
       AllProducts,
     });
-  } catch (error) {
-    console.log(error);
+  } catch(error) {
     res.status(500).json({
       ok: false,
-      msg: "Error inesperado",
+      msg: error,
     });
-  }
+  } 
 };
-const getProducto = async (res, req) => {
+const getProducto = async (req, res) => {
   try {
     const { id } = req.params;
-    const miUsuario = producto.findOne({
+    const miProducto = await producto.findOne({
       where: {
         id: id,
       },
     });
     res.json({
       ok: true,
-      miUsuario,
+      miProducto,
     });
   } catch (error) {
     console.log(error);
@@ -37,30 +35,29 @@ const getProducto = async (res, req) => {
     });
   }
 };
-const updateProducto = async (res, req) => {
+const updateProducto = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, descripcion, precio, estado } = req.body;
-    const arrayUsuario = await producto.findOne({
-      attributes: ["id", "nombre", "descripcion", "precio", "estado"],
-      where: { id: id },
-    });
-
-    await producto.update(
-      {
-        nombre,
-        descripcion,
-        precio,
-        estado,
-      },
-      {
-        where: { id },
+    const productoUpdate = req.body;
+    await producto.update({
+      nombre:productoUpdate.nombre
+      ,descripcion:productoUpdate.descripcion
+      ,precio:productoUpdate.precio
+      ,cantidad: productoUpdate.cantidad
+      ,inventario: productoUpdate.inventario
+      ,categoria: productoUpdate.categoria
+      ,imagen: productoUpdate.imagen
+      ,rating: productoUpdate.rating
+    },
+    {
+      where: {
+          id: id
       }
-    );
+  });
     res.json({
       ok: true,
       msg: "Usuario actualizado",
-      arrayUsuario,
+      productoUpdate,
     });
   } catch (error) {
     res.json({
@@ -69,7 +66,7 @@ const updateProducto = async (res, req) => {
     });
   }
 };
-const deleteProducto = async (res, req) => {
+const deleteProducto = async (req, res) => {
   try {
     const { id } = req.params;
     const deleteProducto = await producto.destroy({
@@ -90,7 +87,7 @@ const deleteProducto = async (res, req) => {
     });
   }
 };
-const createProducto = async (res, req) => {
+const createProducto = async (req, res) => {
   try {
     const { nombre, descripcion, estado, valoracion, precio } = req.body;
     let nuevoProducto = await producto.create(

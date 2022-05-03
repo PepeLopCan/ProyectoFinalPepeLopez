@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       Producto.associate = function (models) { 
         Producto.belongsToMany(models.User, { through: 'user_products', as: 'user' }); 
     }
+
+    
     }
   }
   Producto.init({
@@ -30,4 +32,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'productos',
   });
   return Producto;
-};
+}; 
