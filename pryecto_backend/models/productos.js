@@ -1,42 +1,44 @@
-const { Sequelize } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  const producto = Sequelize.define("productos", {
+
+const {DataTypes}= require('sequelize');
+const sequelize = require('../models/sequalize');
+
+  const producto = sequelize.define("productos", {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
     nombre: {
-      type: Sequelize.TEXT,
+      type: DataTypes.STRING,
     },
     descripcion: {
-      type: Sequelize.TEXT,
-    },
-    estado: {
-      type: Sequelize.BOOLEAN,
-    },
-    valoracion: {
-      type: Sequelize.NUMBER,
+      type: DataTypes.STRING,
     },
     precio: {
-      type: Sequelize.NUMBER,
+      type: DataTypes.NUMBER,
     },
-    imagen:{
-      type: Sequelize.TEXT
+     cantidad:{
+      type: DataTypes.STRING
     },
-    usuarioId: {
-      type: Sequelize.INTEGER,
+     inventario: {
+      type: DataTypes.STRING,
     },
-    cantidad:{
-      type: Sequelize.TEXT
-    }
+    categoria:{
+      type: DataTypes.STRING
+    },
+    imagen: {
+      type: DataTypes.STRING,
+    },
+    rating: {
+      type: DataTypes.NUMBER,
+    },
+    
+  },{
+    timestamps: false,
+    freezeTableName: true
   });
-
-  producto.associate = (models) => {
-    producto.belongsToMany(models.usuario, {
-      through: "user_product",
-      as: "usuarios",
-      foreignKey: "productoId",
-    });
-  };
-};
+  producto.associate = function (models) { 
+    producto.belongsToMany(models.User, { through: 'user_products', as: 'user' }); 
+}
+module.exports = producto;
+ 

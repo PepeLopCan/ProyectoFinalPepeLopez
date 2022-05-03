@@ -1,6 +1,8 @@
-const usuario = require("../models/usuarios");
+const { response } = require("express");
+const usuario = require("../models/usuario")
+const bcrypt = require('bcrypt');
 
-const getAllUsers = async (res, req) => {
+const getAllUsers = async (req, res) => {
   try {
     const allUsers = await usuario.findAll();
     res.json({
@@ -15,10 +17,10 @@ const getAllUsers = async (res, req) => {
     });
   }
 };
-const getUser = async (res, req) => {
+const getUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const miUsuario = usuario.findOne({
+    const miUsuario = await usuario.findOne({
       where: {
         id: id,
       },
@@ -35,30 +37,24 @@ const getUser = async (res, req) => {
     });
   }
 };
-const updateUser = async (res, req = response) => {
+const updateUser = async (req, res = response) => {
   try {
     const { id } = req.params;
-    const { nombre, email, password } = req.body;
-    const arrayUsuario = await usuario.findOne({
-      attributes: ["id", "name", "email", "password"],
-      where: {
-        id: id,
-      },
+    const usuarioUpdate = req.body;
+    await usuario.update({
+     nombre: usuarioUpdate.nombre,
+     email: usuarioUpdate.email,
+     password: usuarioUpdate.password,
+    },
+    {
+        where: {
+            id: id
+        }
     });
-
-    if (usuario.lenght > 0) {
-      arrayUsuario.forEach((usuario) => {
-        usuario.update({
-          nombre,
-          email,
-          password,
-        });
-      });
-    }
     res.json({
       ok: true,
       msg: "Usuario actualizado",
-      arrayUsuario,
+      usuarioUpdate,
     });
   } catch (error) {
     res.json({
@@ -67,7 +63,7 @@ const updateUser = async (res, req = response) => {
     });
   }
 };
-const deleteUser = async (res, req) => {
+const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     const deleteUser = await usuario.destroy({
@@ -88,26 +84,34 @@ const deleteUser = async (res, req) => {
     });
   }
 };
-const createUser = async (res, req) => {
+const createUser = async (req, res) => {
   try {
-    const { nombre, email, password } = req.body;
-    let nuevoUsuario = await usuario.create({
-      nombre: nombre,
-      email: email,
-      password: password,
-    });
+    const {nombre,email,password} = req.body;
 
-    if (nuevoUsuario) {
-      res.json({
-        ok: true,
-        msg: "Usuario creado",
-        nuevoUsuario,
+    const existeEmail = await usuario.findOne({where: {email}});
+
+    if (existeEmail) {
+      return res.status(400).json({
+        ok: false,
+        msg: "El nombre o el correo ya existen",
       });
     }
-  } catch (error) {
+    const miUsuario = new usuario(req.body);
+
+    const salt = bcrypt.genSaltSync();
+    miUsuario.password = bcrypt.hashSync(password, salt);
+
+    miUsuario.save();
+
     res.json({
+      ok: true,
+      miUsuario,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
       ok: false,
-      msg: "Ha ocurido un error",
+      msg: "Error inesperado",
     });
   }
 };
