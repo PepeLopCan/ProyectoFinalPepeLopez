@@ -1,5 +1,6 @@
 const { response } = require("express");
 const producto  = require("../models/productos");
+const multer = require('multer'); 
 
 const getAllProductos = async (req, res) => {
      try {
@@ -89,18 +90,20 @@ const deleteProducto = async (req, res) => {
 };
 const createProducto = async (req, res) => {
   try {
-    const { nombre, descripcion, estado, valoracion, precio } = req.body;
+    const body = req.body;
     let nuevoProducto = await producto.create(
       {
-        nombre: nombre,
-        descripcion: descripcion,
-        estado: estado,
-        valoracion: valoracion,
-        precio: precio,
+        nombre:body.nombre,
+        descripcion:body.descripcion,
+        estado:body.estado,
+        valoracion:body.valoracion,
+        precio: body.precio,
+        cantidad:body.cantidad,
+        inventario:body.inventario,
+        categoria:body.categoria,
+        imagen: req.file.filename,
+        rating:body.rating
       },
-      {
-        fields: ["nombre", "descripcion", "estado", "valoracion", "precio"],
-      }
     );
 
     if (nuevoProducto) {
@@ -124,6 +127,35 @@ const añadirCarrito = async (req, res) => {
   });
   res.json({ producto });
 };
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, 'public/images/productos')
+  },
+  filename: function (req, file, cb) {
+      const mimeExtension = {
+          'image/jpeg': '.jpeg',
+          'image/jpg': '.jpg',
+          'image/png': '.png',
+          'image/gif': '.gif',
+      }
+      cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
+  }
+})
+const uploadAvatar = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+      console.log(file.mimetype)
+      if(file.mimetype === 'image/jpeg' || 
+      file.mimetype === 'image/jpg' || 
+      file.mimetype === 'image/png' ||
+      file.mimetype === 'image/gif') {
+          cb(null, true);
+      } else {
+          cb(null, false);
+          req.fileError = 'File format is not valid';
+      }
+  }
+})
 
 module.exports = {
   getAllProductos,
@@ -132,4 +164,5 @@ module.exports = {
   deleteProducto,
   createProducto,
   añadirCarrito,
+  uploadAvatar
 };

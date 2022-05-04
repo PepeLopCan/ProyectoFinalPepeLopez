@@ -120,10 +120,9 @@ const createUser = async (req, res) => {
     });
   }
 };
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, 'public/images')
+      cb(null, 'public/images/usuarios')
   },
   filename: function (req, file, cb) {
       const mimeExtension = {
@@ -135,7 +134,6 @@ const storage = multer.diskStorage({
       cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
   }
 })
-
 const uploadAvatar = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
@@ -152,6 +150,9 @@ const uploadAvatar = multer({
   }
 })
 
+
+
+
 module.exports = {
   getAllUsers,
   getUser,
@@ -159,5 +160,5 @@ module.exports = {
   deleteUser,
   createUser,
   uploadAvatar,
- 
+  
 };

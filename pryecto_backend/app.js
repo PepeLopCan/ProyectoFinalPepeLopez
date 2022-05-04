@@ -15,10 +15,12 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json ());
 
+const pedidos = require('./routes/pedidos')
 
 
 app.use("/api/usuarios",require("./routes/users"));
 app.use("/api/productos",require("./routes/productos"));
+app.use("/api/pedido",pedidos);
 app.use("/api/auth",require("./routes/auth"));
 
 
