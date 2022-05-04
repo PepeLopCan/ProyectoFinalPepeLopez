@@ -1,6 +1,7 @@
 
 const {DataTypes}= require('sequelize');
 const sequelize = require('./sequalize');
+const pedido = require('./pedidos');
 
   const usuario = sequelize.define("usuarios", {
     id: {
@@ -24,15 +25,15 @@ const sequelize = require('./sequalize');
     imagen: {
       type: DataTypes.STRING,
     },
+    pedidoId: {
+      type: DataTypes.STRING,
+    },
   },{
     timestamps: false,
     freezeTableName: true
   });
 
-  usuario.associate = function (models) { 
-    usuario.belongsToMany(models.producto, { through: 'user_products', as: 'producto' }); 
-}
-
+  usuario.hasOne(pedido, {as: 'pedidoId'});
   module.exports= usuario;
 
  

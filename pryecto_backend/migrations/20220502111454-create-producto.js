@@ -1,5 +1,6 @@
 'use strict';
-export async function up(queryInterface, Sequelize) {
+module.exports = {
+  async up(queryInterface, Sequelize) {
   await queryInterface.createTable('productos', {
     id: {
       allowNull: false,
@@ -40,7 +41,8 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.DATE
     }
   });
-}
-export async function down(queryInterface, Sequelize) {
+},
+async down(queryInterface, Sequelize) {
   await queryInterface.dropTable('productos');
 }
+};
