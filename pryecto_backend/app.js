@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require("express");
 const morgan = require("morgan");
 const cors = require('cors');
+const sequelize = require('../pryecto_backend/models/sequalize');
 
 
 
@@ -29,6 +30,13 @@ app.use("/api/auth",require("./routes/auth"));
 app.listen(PORT, function () {
   console.log("la app ha arrancado");
 });
+
+/* sequelize.sync({ force: false }).then(() => {
+  console.log("Nos hemos conectado a la base de datos");
+}).catch(error => {
+  console.log('Se ha producido un error', error);
+}) */
+
 
 
 

@@ -10,11 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Producto.associate = function (models) { 
-        Producto.belongsToMany(models.User, { through: 'user_products', as: 'user' }); 
-    }
-
-    
     }
   }
   Producto.init({

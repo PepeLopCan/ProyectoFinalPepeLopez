@@ -22,17 +22,14 @@ if ( !req.headers.authorization){
 const ValiarAdmin_Role = async ( req, res , next)=>{
 
     try{
-      const id = req.params.id
-      console.log(req.params)
-      console.log(id)
-      const user = await usuario.findById({
+      const { id } = req.params
+      const user = await usuario.findOne({
         where: {
-          id: id,
+          id:id
         },
       });
-      console.log(user);
       const admin = "ADMIN_ROLE"; 
-      if(user.role != admin) return res.status(401).json('No eres admin')
+      if(user.rol != admin) return res.status(401).json('No eres admin');
       next()
     }catch (error) {
       console.log(error);
@@ -44,4 +41,6 @@ const ValiarAdmin_Role = async ( req, res , next)=>{
   }
   
 
-module.exports = token,ValiarAdmin_Role;
+module.exports ={
+  token,ValiarAdmin_Role
+}

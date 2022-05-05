@@ -34,4 +34,17 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+
+db.usuarios = require('./usuario')(sequelize,DataTypes)
+db.pedidos = require('./pedidos')(sequelize,DataTypes)
+
+db.sequelize.sync({ force: false })
+.then(() => {
+    console.log('yes re-sync done!')
+})
+
+
+  db.pedidos.belongsTo(db.usuarios,{foreignKey: "usuarioId", as: "usuario"});
+  db.usuarios.hasMany(db.pedidos,{foreignKey: "usuarioId",as:'pedido'}); 
+
 module.exports = db;

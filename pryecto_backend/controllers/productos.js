@@ -38,7 +38,8 @@ const getProducto = async (req, res) => {
 };
 const updateProducto = async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.body.id;
+    
     const productoUpdate = req.body;
     await producto.update({
       nombre:productoUpdate.nombre
@@ -47,7 +48,6 @@ const updateProducto = async (req, res) => {
       ,cantidad: productoUpdate.cantidad
       ,inventario: productoUpdate.inventario
       ,categoria: productoUpdate.categoria
-      ,imagen: productoUpdate.imagen
       ,rating: productoUpdate.rating
     },
     {
@@ -69,7 +69,7 @@ const updateProducto = async (req, res) => {
 };
 const deleteProducto = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.body;
     const deleteProducto = await producto.destroy({
       where: {
         id: id,

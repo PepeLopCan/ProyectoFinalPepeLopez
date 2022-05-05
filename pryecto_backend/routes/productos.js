@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var validarJWT= require ('../middleware/validar-token');
+const {token,ValiarAdmin_Role  }= require ('../middleware/validar-token');
+ 
 
 const { getAllProductos,getProducto,createProducto,añadirCarrito ,updateProducto,deleteProducto,uploadAvatar} = require ('../controllers/productos'); 
 
 
-router.get('/todos',validarJWT, getAllProductos);
-router.get('/miProducto/:id',validarJWT, getProducto);
-router.post('/create',uploadAvatar.single('imagen'),createProducto);
-router.post ('/carrito/:id',validarJWT,añadirCarrito)
-router.put('/update/:id',validarJWT, updateProducto);
-router.delete('/delete/:id',validarJWT, deleteProducto);
+router.get('/todos',token, getAllProductos);
+router.get('/miProducto/:id',token, getProducto);
+router.post('/create/:id',token,uploadAvatar.single('imagen'),ValiarAdmin_Role,createProducto);
+router.post ('/carrito/:id',token,añadirCarrito)
+router.put('/update/:id',token,ValiarAdmin_Role, updateProducto);
+router.delete('/delete/:id',token,ValiarAdmin_Role ,deleteProducto);
 
 module.exports = router;
