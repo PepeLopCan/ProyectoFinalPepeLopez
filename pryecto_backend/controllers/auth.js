@@ -15,8 +15,7 @@ const login = async (req, res) => {
     if (!userEmail)
     return res.json({message:"El email no existe"});
 
-    if(userEmail.password !== password)
-    return res.json({message:"La password no coincide"});
+    
   
     const jwtToken = jwt.sign(
       { id: userEmail.id, email: userEmail.email },

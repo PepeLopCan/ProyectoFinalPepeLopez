@@ -1,9 +1,9 @@
 
 const {DataTypes}= require('sequelize');
 const sequelize = require('./sequalize');
-const pedido = require('./pedidos');
+const pedidos = require('./pedidos');
 
-  const usuario = sequelize.define("usuarios", {
+  const usuarios = sequelize.define("usuarios", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -24,16 +24,13 @@ const pedido = require('./pedidos');
     },
     imagen: {
       type: DataTypes.STRING,
-    },
-    pedidoId: {
-      type: DataTypes.STRING,
-    },
+    }
   },{
     timestamps: false,
     freezeTableName: true
   });
 
-  usuario.hasOne(pedido, {as: 'pedidoId'});
-  module.exports= usuario;
+  //usuarios.hasMany(pedidos,{foreignKey: "usuarioId",as:'pedido'}); 
+  module.exports= usuarios;
 
  

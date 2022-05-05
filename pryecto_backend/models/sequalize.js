@@ -15,4 +15,5 @@ const sequelize = new Sequelize("tienda", "pepe", "123456", {
     console.log("Se ha producido un error", error);
   });
 
+
 module.exports =sequelize;

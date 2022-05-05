@@ -1,7 +1,9 @@
 const { response } = require("express");
 const usuario = require("../models/usuario")
+const pedido = require("../models/pedidos");
 const bcrypt = require('bcrypt');
 const multer = require('multer'); 
+const asociacion = require('../models/asociaciones');
 
 const getAllUsers = async (req, res) => {
   try {
@@ -87,7 +89,7 @@ const deleteUser = async (req, res) => {
 };
 const createUser = async (req, res) => {
   try {
-    let {nombre,email,password} = req.body;
+    let {nombre,email,password,rol} = req.body;
 
     const existeEmail = await usuario.findOne({where: {email}});
 
@@ -105,7 +107,8 @@ const createUser = async (req, res) => {
       nombre:nombre,
       email: email,
       password:password,
-      imagen: req.file.filename
+      imagen: req.file.filename,
+      rol:rol
     });
 
     res.json({
@@ -151,6 +154,21 @@ const uploadAvatar = multer({
 })
 
 
+const mostrarPedidos = async (req, res) => {
+
+  const idUsuario = req.params;
+  console.log(idUsuario);
+  const data = await pedido.findAll({
+  
+    where: { usuarioId:idUsuario.id}
+  })
+
+  res.status(200).send(data)
+}
+
+
+
+
 
 
 module.exports = {
@@ -160,5 +178,7 @@ module.exports = {
   deleteUser,
   createUser,
   uploadAvatar,
+  mostrarPedidos
+  
   
 };
