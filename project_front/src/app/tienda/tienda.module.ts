@@ -9,7 +9,7 @@ import { ComponentsModule } from '../components/components.module';
 import { CarouselService } from '../shared/services/carousel.service';
 import { SharedModuleModule } from '../shared-module.module';
 import { TiendaRoutingModule } from './tienda-routing.module';
-import { ProductserviceService } from '../shared/productservice.service';
+import { ProductserviceService } from '../shared/services/productos/productservice.service';
 import { ShopCartComponent } from './containers/carrito/shop-cart/shop-cart.component';
 import { AdminComponent } from './containers/admin/admin/admin.component';
 import { ModalUpdateProductComponent } from './containers/admin/components/modal-update-product/modal-update-product.component';

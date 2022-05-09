@@ -17,3 +17,13 @@ section{
     border: 1px solid rgb(24, 160, 210);
 }
 
+:host::ng-deep .p-button.p-fileupload-choose{
+    width:200px;
+    background-color: rgb(27, 218, 167);
+    border: 1px solid rgb(27, 218, 167);
+    display:flex;
+    justify-content: center;
+
+    }
+    
+

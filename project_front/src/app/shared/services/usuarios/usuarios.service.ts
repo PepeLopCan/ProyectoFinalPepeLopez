@@ -28,9 +28,9 @@ export class UsuariosService {
       password:usuario.password,
     
     }
-      return this.http.put(`${base_url}/update`+ id  + usuario,body);
-
+    return this.http.put(`${base_url}/update`+ id  + usuario,body);
   }
+
 }
 
 

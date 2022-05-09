@@ -8,6 +8,8 @@ import{ShopComponent} from '../tienda/containers/shop/shop/shop.component'
 import { ModalEditUsuarioComponent } from '../tienda/containers/MiPerfil/component/modal-edit-usuario/modal-edit-usuario.component';
 import { ShopCartComponent } from './containers/carrito/shop-cart/shop-cart.component';
 import { AdminComponent } from './containers/admin/admin/admin.component';
+import { ModalcreateProductComponent } from './containers/admin/components/modalcreate-product/modalcreate-product.component';
+import { ModalUpdateProductComponent } from './containers/admin/components/modal-update-product/modal-update-product.component';
 
 const routes: Routes = [
   
@@ -18,7 +20,9 @@ const routes: Routes = [
       { path: 'shop',component: ShopComponent},
       { path: 'editUser/:id',component: ModalEditUsuarioComponent},
       { path: 'carrito',component: ShopCartComponent},
-      { path: 'admin',component: AdminComponent}  
+      { path: 'admin',component: AdminComponent},
+      { path: 'createProduct',component: ModalcreateProductComponent} , 
+      { path: 'updateProduct/:id',component: ModalUpdateProductComponent}  
     
 
 ];
