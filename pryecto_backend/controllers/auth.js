@@ -21,7 +21,7 @@ const login = async (req, res) => {
       { id: userEmail.id, email: userEmail.email },
       env.secret
     );
-    res.json({ message: "Logueao!", token: jwtToken });
+    res.json({ message: "Logueao!", token: jwtToken ,userEmail});
 };
 
 const register = async (req, res) => {

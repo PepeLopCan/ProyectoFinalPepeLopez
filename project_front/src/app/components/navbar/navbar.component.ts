@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import { ProductosService } from 'src/app/shared/services/productos/productos.service';
 import { producto } from 'src/app/shared/modales/producto-modal';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,7 +12,7 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[];
   producto:producto[]=[];
     dialogService: any;
-  constructor(private productoService:ProductosService) {
+  constructor(private router:Router, private authService:AuthService) {
      this.items = [
             {
                 label:'home',
@@ -58,5 +59,8 @@ export class NavbarComponent implements OnInit {
   
   }
 
+  logout(){
+    this.authService.logout()
 
+  }
 }

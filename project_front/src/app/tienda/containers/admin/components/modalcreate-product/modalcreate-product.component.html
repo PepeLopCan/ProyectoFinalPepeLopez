@@ -1,1 +1,27 @@
-<p>modalcreate-product works!</p>
+<form [formGroup]="crearProducto">      
+<div class="field">
+    <label for="name">Name</label>
+    <input type="text"formControlName="nombre" pInputText id="name" required autofocus />
+</div>
+<div class="field">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" pInputTextarea required rows="3" cols="20"></textarea>
+</div>
+<div class="field">
+    <label for="inventoryStatus">Inventory Status</label>
+    <p-dropdown  inputId="inventoryStatus" [options]="inventario" formControlName="inventario" placeholder="inventario"></p-dropdown>
+</div>
+<div class="formgrid grid">
+    <div class="field col">
+        <label for="price">Precio</label>
+        <p-inputNumber id="price" mode="currency" formControlName="precio" currency="USD" locale="en-US"></p-inputNumber>
+    </div>
+    <div class="field col">
+        <label for="quantity">Cantidad</label>
+        <p-inputNumber id="quantity" formControlName="cantidad"></p-inputNumber>
+    </div>
+</div>
+<div class="formgrid grid flex justify-content-center mt-3">
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="crear()"></button>
+</div>
+</form>

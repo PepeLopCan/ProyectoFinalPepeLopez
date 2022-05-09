@@ -7,7 +7,6 @@ export class producto{
        public estado?: boolean,
        public valoracion?: number,
        public precio?: number,
-       public usuarioId?:Array<any>,
         public imagen?:string
         ){}
     }

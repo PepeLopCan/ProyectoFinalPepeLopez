@@ -1,15 +1,11 @@
 export interface Product {
     id?:string;
-    code?:string;
-    name?:string;
+    nombre?:string;
     description?:string;
-    price?:number;
-    quantity?:number;
-    inventoryStatus?:string;
-    category?:string;
-    image?:string;
+    precio?:number;
+    cantidad?:number;
+    inventario?:string;
+    categoria?:string;
+    imagen?:string;
     rating?:number;
 }
-export interface ProductDTO {
-    data: Product[];
-  }

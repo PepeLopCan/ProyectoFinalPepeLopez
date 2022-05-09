@@ -57,7 +57,7 @@ const updateProducto = async (req, res) => {
   });
     res.json({
       ok: true,
-      msg: "Usuario actualizado",
+      msg: "Producto actualizado",
       productoUpdate,
     });
   } catch (error) {
@@ -95,9 +95,7 @@ const createProducto = async (req, res) => {
       {
         nombre:body.nombre,
         descripcion:body.descripcion,
-        estado:body.estado,
-        valoracion:body.valoracion,
-        precio: body.precio,
+        precio:body.precio,
         cantidad:body.cantidad,
         inventario:body.inventario,
         categoria:body.categoria,
@@ -105,21 +103,16 @@ const createProducto = async (req, res) => {
         rating:body.rating
       },
     );
-
-    if (nuevoProducto) {
       res.json({
         ok: true,
         msg: "Producto creado",
         nuevoProducto,
       });
-    }
-  } catch (error) {
-    res.json({
-      ok: false,
-      msg: "Ha ocurido un error",
-    });
+    } catch (error) {
+      res.status(500).json('Error al crear producto ' + error)
   }
-};
+  };
+
 const añadirCarrito = async (req, res) => {
   const { usuarioId } = req.params;
   const producto = await producto.findAll({
@@ -127,6 +120,7 @@ const añadirCarrito = async (req, res) => {
   });
   res.json({ producto });
 };
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
       cb(null, 'public/images/productos')
