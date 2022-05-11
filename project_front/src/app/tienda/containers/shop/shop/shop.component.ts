@@ -26,18 +26,16 @@ export class ShopComponent implements OnInit {
 
     stock:string;
 
-
-
   constructor(private productService: ProductserviceService, private primengConfig: PrimeNGConfig,private messageService: MessageService) {
       this.sortOrder=0;
       this.sortField="";
       this.stock="";
+  
    }
 
  
   ngOnInit() {
     this.getProductos();
-    this.primengConfig.ripple = true;
     this.sortOptions = [
         {label: 'Price High to Low', value: '!price'},
         {label: 'Price Low to High', value: 'price'},
@@ -47,9 +45,7 @@ export class ShopComponent implements OnInit {
         {label: 'Peores Valorados', value: 'rating'},
         {label: 'Mejores Valorados', value: '!rating'},
     ];
-  
-
-    this.primengConfig.ripple = true;
+    
 }
 
 onSortChange(event:any) {

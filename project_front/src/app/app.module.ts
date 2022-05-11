@@ -10,9 +10,6 @@ import { TiendaModule} from './tienda/tienda.module'
 import { ComponentsModule } from './components/components.module';
 import { InjectorService } from './injector/injector.service';
 
-   
-
-
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +22,6 @@ import { InjectorService } from './injector/injector.service';
     TiendaModule,
     BrowserAnimationsModule,
     ComponentsModule,
-    
   ],
   providers: [
     {

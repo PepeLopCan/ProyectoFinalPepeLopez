@@ -23,6 +23,7 @@ app.use("/api/usuarios",require("./routes/users"));
 app.use("/api/productos",require("./routes/productos"));
 app.use("/api/pedido",pedidos);
 app.use("/api/auth",require("./routes/auth"));
+app.use('/public/images/productos',express.static('public/images/productos'));
 
 
 //Conexion
