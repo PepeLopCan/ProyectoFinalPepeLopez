@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpHandler, HttpRequest } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class InjectorService implements HttpInterceptor{
+export class InjectorService {
+  constructor() {}
 
-  constructor() { }
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    console.log('LLEGO');
+    const token: any = localStorage.getItem('token');
 
-  intercept(req: HttpRequest<any>, next: HttpHandler){
-
-    const token:any = localStorage.getItem('token');
     let request = req;
-     request = req.clone({
+
+    request = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    return next.handle(request)
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return next.handle(request);
   }
 }
