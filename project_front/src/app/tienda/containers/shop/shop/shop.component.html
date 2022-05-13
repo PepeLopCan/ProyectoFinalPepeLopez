@@ -33,7 +33,7 @@
         <ng-template let-product pTemplate="listItem">
             <div class="col-12" data-aos="fade-down">
                 <div class="product-list-item">
-                    <img [src]="'localhost:3000' + product.imagen" [alt]="product.nombre"/>
+                    <img [src]="'http://localhost:3000/public/images/productos/'+ product.imagen" [alt]="product.nombre"/>
                     <div class="product-list-detail">
                         <div class="product-name">{{product.nombre}}</div>
                         <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
