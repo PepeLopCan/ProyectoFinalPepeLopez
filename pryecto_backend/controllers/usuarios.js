@@ -107,7 +107,8 @@ const createUser = async (req, res) => {
       nombre:nombre,
       email: email,
       password:password,
-      //imagen: req.file.filename,
+      imagen: req.file.filename,
+      rol:rol
     });
 
     res.json({
@@ -124,7 +125,7 @@ const createUser = async (req, res) => {
 };
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, 'public')
+      cb(null, 'public/images/usuarios')
   },
   filename: function (req, file, cb) {
       const mimeExtension = {

@@ -50,8 +50,10 @@ createProduct(producto:Product):Observable<any>{
         cantidad: producto.cantidad,
         inventario:producto.inventario,
         categoria:producto.categoria,
-        rating:producto.rating}
-    return this.http.post(`${base_url}/productos/create/`+ user.id , body, { headers: {
+        rating:producto.rating
+      }
+    console.log(body);
+    return this.http.post(`${base_url}/productos/create/`+ user.id, body, { headers: {
       authorization:`Bearer ${token}`
     }});
       }

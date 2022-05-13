@@ -42,7 +42,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
             <p-tableCheckbox [value]="products"></p-tableCheckbox>
         </td>
         <td>{{product.nombre}}</td>
-        <td style="padding:0px;"><img [src]="'../../../../../assets/Surf/' + product.imagen" style="height:170px;"/></td> 
+        <td style="padding:0px;"><img [src]="'http://localhost:3000/public/images/productos/' + product.imagen" style="height:170px;"/></td> 
         <td>{{product.precio | currency:'EUR'}}</td>
         <td>{{product.categoria}}</td>
         <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
