@@ -4,6 +4,7 @@ import { producto } from 'src/app/shared/modales/producto-modal';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Usuario } from 'src/app/shared/modales/usuario-modal';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +15,11 @@ export class NavbarComponent implements OnInit {
   producto:producto[]=[];
     dialogService: any;
     usuarios:Usuario[]=[];
-  constructor(private router:Router, private authService:AuthService) {
+  isLoggedIn$?: Observable<boolean>;   
+  constructor(private router:Router, public authService:AuthService) {
+
+    
+
      this.items = [
             {
                 label:'home',
@@ -58,7 +63,8 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  
+
+
   }
 
   logout(){

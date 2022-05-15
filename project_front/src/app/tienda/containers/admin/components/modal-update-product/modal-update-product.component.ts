@@ -18,7 +18,6 @@ export class ModalUpdateProductComponent implements OnInit {
   data:any;
   productos:Product[]=[];
 
-
   constructor(
     private productService:ProductserviceService ,
     private router:Router,
@@ -27,28 +26,28 @@ export class ModalUpdateProductComponent implements OnInit {
     public config: DynamicDialogConfig, 
     private confirmationService: ConfirmationService) {
 
-    this.data = this.config.data
-     this.formEdit = new FormGroup({
-      nombre: new FormControl(this.data?.productos?.nombre),
-      description: new FormControl(this.data?.productos?.description),
-      inventario: new FormControl(this.data?.productos?.inventario),
-      precio: new FormControl(this.data?.productos?.precio),
-      categoria: new FormControl(this.data?.productos?.categoria),
-      rating: new FormControl(this.data?.productos?.rating),
-   }) 
-  } 
+      this.data = this.config.data
+      this.formEdit = new FormGroup({
+        nombre: new FormControl(this.data?.productos?.nombre, Validators.required),
+  
+     })
+     console.log(this.data);
+     
+    }
 
-
+      
   ngOnInit(): void {
+    
   }
 
-/*   editar(id:string){
+  editar(id:string){
     console.log(this.formEdit.value);
     console.log(id);
     this.productService.updateProducto(id, this.formEdit.value).subscribe((resp:any)=>{
       console.log(resp)
       this.ref.close(true);
-  })
-}  */
+    })
+  }
+
 }
 

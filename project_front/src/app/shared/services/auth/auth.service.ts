@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Usuario } from '../../modales/usuario-modal';
 import { Login } from '../../interfaces/login';
 import { Register } from '../../interfaces/register';
@@ -15,6 +15,13 @@ const base_url = environment.base_url;
 export class AuthService {
 
   constructor(private http:HttpClient, private router:Router) {}
+
+  loggedIn() {
+    const local=localStorage.getItem('token'); // {2}
+
+    return local;
+  }
+  
 
   login(formData: Login) {
     return this.http.post(`${base_url}/auth/login`, formData);
