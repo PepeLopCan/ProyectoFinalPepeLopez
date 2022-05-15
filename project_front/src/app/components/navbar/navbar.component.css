@@ -28,3 +28,22 @@ i:hover{
   transform:scale(1.2);
   transition:.2s;
 }
+
+img{
+    vertical-align: middle;
+    border-style: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0px 3px 10px;
+}
+img:hover{
+  transform:scale(1.2);
+  transition:.2s;
+  cursor: pointer;
+}

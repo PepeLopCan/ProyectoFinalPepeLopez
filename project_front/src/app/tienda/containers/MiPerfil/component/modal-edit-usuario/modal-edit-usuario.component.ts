@@ -14,7 +14,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 export class ModalEditUsuarioComponent implements OnInit {
 
   usuario:Usuario[]=[];
-  _id:any
+  id:any
   formEdit: any;
   data:any;
 

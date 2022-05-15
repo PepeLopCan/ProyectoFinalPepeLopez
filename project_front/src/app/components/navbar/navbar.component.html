@@ -1,6 +1,6 @@
 <p-menubar [model]="items" *ngIf="authService.loggedIn()">
    <div>
-        <p-avatar image="../../../assets/images/imagenes/mbappe.webp" styleClass="mr-2" shape="circle" routerLink="/tienda/myperfil"></p-avatar>
+        <img [src]="'http://localhost:3000/public/images/usuarios/'+ user.imagen" routerLink="/tienda/myperfil" styleClass="mr-2">
         <i class="pi pi-shopping-cart mr-4 ml-2 my-2 p-text-secondary" pBadge style="font-size: 23px; cursor: pointer;"styleClass="mr-2" value="8" severity="danger" routerLink="/tienda/carrito"></i>
         <button type="button" pRipple pButton label="Logout" (click)="logout()" icon="pi pi-power-off" style="margin-left:.25em"></button>
     </div> 

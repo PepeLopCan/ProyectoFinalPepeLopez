@@ -15,7 +15,8 @@ export class NavbarComponent implements OnInit {
   producto:producto[]=[];
     dialogService: any;
     usuarios:Usuario[]=[];
-  isLoggedIn$?: Observable<boolean>;   
+  isLoggedIn$?: Observable<boolean>;  
+  user = JSON.parse(localStorage.getItem('usuario') || '') 
   constructor(private router:Router, public authService:AuthService) {
 
     

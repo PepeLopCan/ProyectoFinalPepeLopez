@@ -18,6 +18,7 @@ export class MiPerfilComponent implements OnInit {
  value2:string;
  usuarios: Usuario[]=[];
  id:any;
+  user = JSON.parse(localStorage.getItem('usuario') || '')
 
   constructor( private usuarioService:UsuariosService,  public dialogService: DialogService, public messageService: MessageService,private route: ActivatedRoute ) {
     this.value2="Pepe";
@@ -46,7 +47,8 @@ show() {
 }
 
 getMiUsuario(){
-  this.usuarioService.getMiUsuario(this.id).subscribe((resp: any)=>{
+  const user = JSON.parse(localStorage.getItem('usuario') || '')
+  this.usuarioService.getMiUsuario(user).subscribe((resp: any)=>{
     this.usuarios=resp.miUsuario;
     console.log(this.usuarios);
   })

@@ -13,21 +13,18 @@ export class RegisterComponent implements OnInit {
 
   usario:Usuario[]=[];
 
-  public registerForm = new FormGroup({
+ public registerForm = new FormGroup({
     nombre:new FormControl('',Validators.required),
     email:new FormControl('',Validators.required),
     password:new FormControl('',Validators.required),
-  });
+  }); 
 
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  onBasicUpload(event:any) {}
-
-
-  crearUser(){
+   crearUser(){
   return this.authService.crearUsuario(this.registerForm.value)
   .subscribe(resp=>{
     this.router.navigateByUrl('/login');
@@ -35,6 +32,6 @@ export class RegisterComponent implements OnInit {
     console.log(resp);
   })
 
-    }
+    } 
   }
 

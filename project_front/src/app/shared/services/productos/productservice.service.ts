@@ -11,6 +11,7 @@ const base_url = environment.base_url.toLowerCase();
 })
 
 export class ProductserviceService {
+  cartItems=[];
   producto:Product[]=[];
   constructor(private http: HttpClient) { }
 
@@ -64,8 +65,8 @@ createProduct(producto:Product):Observable<any>{
     return this.http.put(`${base_url}/productos/create/`+ user.id, {body:{id:id,producto:producto}}, { headers: {
       authorization:`Bearer ${token}`
     }});
-
   }
+
   }
 
 

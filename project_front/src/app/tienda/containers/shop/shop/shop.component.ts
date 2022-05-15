@@ -70,4 +70,9 @@ getProductos() {
     console.log(resp);
   });
 }
+
+addToCart(product:Product){
+
+}
+
 }

@@ -9,7 +9,8 @@ import { SharedModuleModule } from '../shared-module.module';
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
+    
     
   ],
   imports: [
