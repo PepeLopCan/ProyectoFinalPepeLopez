@@ -48,8 +48,8 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
         <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
         <td><span [class]="'product-badge status-' + product.inventario.toLowerCase()"[ngClass]="{'OUTOFSTOCK':product.inventario ==='OUTOFSTOCK','INSTOCK':product.inventario ==='INSTOCK','LOWSTOCK':product.inventario ==='LOWSTOCK' }">{{product.inventario}}</span></td>
         <td>
-            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(product)"></button>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning " (click)="deleteUsuario(product.id)"></button>
+            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="showUpdate(product)"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning " (click)="confirm($event,product)" ></button>
         </td>
     </tr>
 </ng-template>
@@ -60,3 +60,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
 </ng-template>
 </p-table>
 </div>
+
+<p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle" acceptLabel="Si"
+acceptButtonStyleClass="p-button-sm acceptButton" rejectButtonStyleClass="p-button-sm p-button-secondary">
+</p-confirmDialog>

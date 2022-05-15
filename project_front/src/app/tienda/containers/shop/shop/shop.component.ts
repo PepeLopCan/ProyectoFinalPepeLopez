@@ -4,6 +4,7 @@ import { Product } from 'src/app/shared/interfaces/product';
 import {MessageService, SelectItem} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -26,7 +27,7 @@ export class ShopComponent implements OnInit {
 
     stock:string;
 
-  constructor(private productService: ProductserviceService, private primengConfig: PrimeNGConfig,private messageService: MessageService) {
+  constructor(private productService: ProductserviceService, private primengConfig: PrimeNGConfig,private messageService: MessageService, private router:Router) {
       this.sortOrder=0;
       this.sortField="";
       this.stock="";
@@ -68,6 +69,10 @@ getProductos() {
     this.product = resp.AllProducts;
     console.log(resp);
   });
+}
+
+addToCart(product:Product){
+
 }
 
 }

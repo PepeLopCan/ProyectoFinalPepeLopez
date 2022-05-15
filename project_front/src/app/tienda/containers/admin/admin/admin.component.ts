@@ -5,6 +5,7 @@ import { Product } from 'src/app/shared/interfaces/product';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalcreateProductComponent } from '../components/modalcreate-product/modalcreate-product.component';
 import { DialogService } from 'primeng/dynamicdialog';
+import { ModalUpdateProductComponent } from '../components/modal-update-product/modal-update-product.component';
 
 @Component({
   selector: 'app-admin',
@@ -28,14 +29,11 @@ export class AdminComponent implements OnInit {
 
   products: Product[]=[];
 
-
-  product!: Product;
-
   selectedProducts: Product[]=[];
 
   submitted: boolean;
 
-  stock: Array<string>=['STOCK,LOWSTOKC,OUTOFSTOCK'];
+  stock: Array<string>=['STOCK,LOWSTOCK,OUTOFSTOCK'];
 
  
  
@@ -46,17 +44,14 @@ export class AdminComponent implements OnInit {
     categoria: new FormControl('', Validators.required),
     precio: new FormControl('', Validators.required),
     valoracion: new FormControl('', Validators.required),
-
-
   });
+
 
   constructor(private producService:ProductserviceService,
     private messageService: MessageService,public dialogService: DialogService,
-    private confirmationService: ConfirmationService){ 
+    private confirmationService: ConfirmationService,){ 
       this.productDialog=false;
-      this.submitted=false;
-
-  
+      this.submitted=false;  
     }
 
   ngOnInit(): void {
@@ -107,57 +102,24 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  deleteUsuario(id:any){
+  confirm(event: any, product:Product) {
+    console.log(event);
+    this.confirmationService.confirm({
+      message: `¿Estas seguro que deseas eliminar al usuario ${product.nombre}?`,
+      accept: () => {
+        this.deleteProducto(product.id)
+        console.log(product.id);
+      }
+    });
+  }
+
+
+  deleteProducto(id:any){
     this.producService.deleteProducto(id).subscribe((resp:any)=>{
+    console.log(resp);
+    this.messageService.add({severity:'success', summary: 'Successful', detail: 'Producto Eliminado', life: 3000});
      this.getProductos();
     })
-  }
-
-
-      openNew() {
-        this.product = {};
-        this.submitted = false;
-        this.productDialog = true;
-    }
-
-  editProduct(product: Product) {
-      this.product = {...product};
-      this.productDialog = true;
-  }
-
-  deleteProduct(product: Product) {
-      this.confirmationService.confirm({
-          message: 'Are you sure you want to delete ' + product.nombre + '?',
-          header: 'Confirm',
-          icon: 'pi pi-exclamation-triangle',
-          accept: () => {
-              this.products = this.products.filter(val => val.id !== product.id);
-              this.product = {};
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
-          }
-      });
-  }
-
-  hideDialog() {
-      this.productDialog = false;
-      this.submitted = false;
-  }
-  
-  saveProduct() {
-       this.submitted = true;
-      if (this.product.nombre?.trim()) {
-          if (this.product.id) {              
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
-          }
-          else {
-              this.products.push(this.product);
-              this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
-          }
-
-          this.products = [...this.products];
-          this.productDialog = false;
-          this.product = {};
-      } 
   }
 
 
@@ -170,10 +132,31 @@ export class AdminComponent implements OnInit {
     });
     modal.onClose.subscribe((product: boolean) =>{
         if (product== true) {
-          this.messageService.add({severity:'info', summary: 'Info', detail: 'Perfil Actualizado'});
+          this.messageService.add({severity:'info', summary: 'Info', detail: 'Producto creado'});
           this.getProductos();
         }
     });
   }
+
+  showUpdate(product:any) {
+    console.log(product)
+    const modal = this.dialogService.open(ModalUpdateProductComponent, {
+      data: {
+        products:product
+      },
+      header:"Actualizar producto",
+      width: '450px',
+      height: '700px',
+      dismissableMask: true,
+    });
+    modal.onClose.subscribe((product: boolean) =>{
+        if (product== true) {
+          this.messageService.add({severity:'info', summary: 'Info', detail: 'Producto Actualizado'});
+          this.getProductos();
+        }
+    });
+  }
+
+
 
 }

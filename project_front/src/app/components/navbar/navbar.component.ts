@@ -3,6 +3,8 @@ import {MenuItem} from 'primeng/api';
 import { producto } from 'src/app/shared/modales/producto-modal';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { Usuario } from 'src/app/shared/modales/usuario-modal';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,7 +14,13 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[];
   producto:producto[]=[];
     dialogService: any;
-  constructor(private router:Router, private authService:AuthService) {
+    usuarios:Usuario[]=[];
+  isLoggedIn$?: Observable<boolean>;  
+  user = JSON.parse(localStorage.getItem('usuario') || '') 
+  constructor(private router:Router, public authService:AuthService) {
+
+    
+
      this.items = [
             {
                 label:'home',
@@ -56,7 +64,8 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  
+
+
   }
 
   logout(){

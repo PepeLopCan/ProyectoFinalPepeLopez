@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   usario:Usuario[]=[];
+  isLoggedin: boolean = false;
 
   public loginForm = new FormGroup({
     email:new FormControl('',Validators.required),

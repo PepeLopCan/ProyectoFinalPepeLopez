@@ -13,8 +13,8 @@ export class UsuariosService {
 
   constructor(private http:HttpClient, private router:Router) { }
 
-  getMyUser(id:string):Observable<any>{
-    return this.http.get<Usuario>(`${base_url}/myUser/` + id);
+  getMiUsuario(id:string):Observable<any>{
+    return this.http.get<Usuario>(`${base_url}/miUsuario/` + id);
   }
 
   deleteUser(id:string):Observable<any>{

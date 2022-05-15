@@ -1,4 +1,8 @@
-<form [formGroup]="crearProducto">      
+<form [formGroup]="crearProducto"> 
+    <div class="field">
+        <label for="name">Imagen</label>
+        <p-fileUpload formControlName="imagen" mode="basic" chooseLabel="Cambiar imagen" name="demo[]" url="./upload.php" class="w-4" accept="image/*" (onUpload)="onBasicUpload($event)" [auto]="true"></p-fileUpload>
+    </div>         
 <div class="field">
     <label for="name">Name</label>
     <input type="text"formControlName="nombre" pInputText id="name" required autofocus />
@@ -8,24 +12,24 @@
     <textarea id="description" formControlName="description" pInputTextarea required rows="3" cols="20"></textarea>
 </div>
 <div class="field">
-    <label for="inventoryStatus">Inventory Status</label>
-    <p-dropdown  inputId="inventoryStatus" [options]="inventario" formControlName="inventario" placeholder="inventario"></p-dropdown>
+    <label for="Inventario">Inventario</label>
+    <p-dropdown  inputId="Inventario" [options]="inventario" formControlName="inventario" placeholder="inventario"></p-dropdown>
 </div>
 <div class="formgrid grid">
     <div class="field col">
         <label for="price">Precio</label>
-        <p-inputNumber id="price" mode="currency" formControlName="precio" currency="USD" locale="en-US"></p-inputNumber>
+        <p-inputNumber id="price" mode="currency" formControlName="precio" currency="EUR" locale="de-DE"></p-inputNumber>
     </div>
-    <div class="field col">
-        <label for="quantity">Cantidad</label>
-        <p-inputNumber id="quantity" formControlName="cantidad"></p-inputNumber>
+    <div class="field">
+        <label for="categoria">Categoria</label>
+        <p-dropdown  inputId="categoria" [options]="categoria" formControlName="categoria" placeholder="categoria"></p-dropdown>
     </div>
     <div class="field col">
         <label for="quantity">Rating</label>
-        <p-inputNumber id="quantity" formControlName="rating"></p-inputNumber>
+        <p-rating formControlName="rating"></p-rating>
     </div>
 </div>
 <div class="formgrid grid flex justify-content-center mt-3">
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="crear()"></button>
+        <p-button label="Ver detalle" class="p-button-warning" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="confirm($event)"></p-button>
 </div>
 </form>

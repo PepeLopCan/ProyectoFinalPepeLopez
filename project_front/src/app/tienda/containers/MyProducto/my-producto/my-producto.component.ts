@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ProductserviceService } from 'src/app/shared/services/productos/productservice.service';
 import { Product } from 'src/app/shared/interfaces/product';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-my-producto',
@@ -11,25 +12,27 @@ import { Product } from 'src/app/shared/interfaces/product';
 })
 export class MyProductoComponent implements OnInit {
   value19: number = 0;
-  producto:Product[]=[];
+  producto = new Product()
   val3:number
-  constructor(private primengConfig: PrimeNGConfig,private messageService: MessageService, private productService: ProductserviceService, ) {
+  id:any;
+  constructor(private primengConfig: PrimeNGConfig,private messageService: MessageService, private productService: ProductserviceService, private route: ActivatedRoute ) {
     this.val3 =3;
    }
 
-  ngOnInit(): void {
-  this.getTask
-  }
+  ngOnInit(): void { 
+    this.id = this.route.snapshot.params['id'];
+   this.getProducto()
+
+;}
+      
   showInfo() {
     this.messageService.add({severity:'info', summary: 'Info', detail: 'Añadido al carrito'});
   }
 
-  getTask(id:string){
-    this.productService.getProducto(id).subscribe((resp: any)=>{
+  getProducto(){
+    this.productService.getProducto(this.id).subscribe((resp: any)=>{
       this.producto=resp.miProducto;
-      console.log(resp);
+      console.log(this.producto);
     })
   }
-
-
 }

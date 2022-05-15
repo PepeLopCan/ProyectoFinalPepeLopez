@@ -1,0 +1,28 @@
+:host ::ng-deep .p-inputtext{
+    display:flex;
+    justify-content: center;
+    width: 300px;
+}
+
+:host ::ng-deep .p-pInputTextarea{
+    display:flex;
+    justify-content: center;
+    width: 200px;
+    height:200px
+}
+
+:host ::ng-deep .p-inputnumber-input{
+    display:flex;
+    justify-content: center;
+    width: 110px;
+}
+.field > label{
+    display:block;
+}
+
+:host ::ng-deep .p-dropdown .p-dropdown-label.p-placeholder{
+    display:flex;
+    justify-content: center;
+    width: 160px;
+  
+}
