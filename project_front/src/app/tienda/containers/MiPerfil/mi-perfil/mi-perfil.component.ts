@@ -5,6 +5,7 @@ import { UsuariosService } from 'src/app/shared/services/usuarios/usuarios.servi
 import { ModalEditUsuarioComponent } from '../component/modal-edit-usuario/modal-edit-usuario.component';
 import { Usuario } from 'src/app/shared/modales/usuario-modal';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -16,12 +17,15 @@ import { MessageService } from 'primeng/api';
 export class MiPerfilComponent implements OnInit {
  value2:string;
  usuarios: Usuario[]=[];
+ id:any;
 
-  constructor( private usuarioService:UsuariosService,  public dialogService: DialogService, public messageService: MessageService) {
+  constructor( private usuarioService:UsuariosService,  public dialogService: DialogService, public messageService: MessageService,private route: ActivatedRoute ) {
     this.value2="Pepe";
    }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.getMiUsuario();
   }
 
   onBasicUpload(event:any) {
@@ -39,6 +43,13 @@ show() {
         this.messageService.add({severity:'info', summary: 'Info', detail: 'Perfil Actualizado'});
       }
   });
+}
+
+getMiUsuario(){
+  this.usuarioService.getMiUsuario(this.id).subscribe((resp: any)=>{
+    this.usuarios=resp.miUsuario;
+    console.log(this.usuarios);
+  })
 }
 }
 

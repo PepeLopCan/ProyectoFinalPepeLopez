@@ -3,6 +3,7 @@ import {MenuItem} from 'primeng/api';
 import { producto } from 'src/app/shared/modales/producto-modal';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { Usuario } from 'src/app/shared/modales/usuario-modal';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,6 +13,7 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[];
   producto:producto[]=[];
     dialogService: any;
+    usuarios:Usuario[]=[];
   constructor(private router:Router, private authService:AuthService) {
      this.items = [
             {

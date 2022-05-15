@@ -13,4 +13,6 @@ export class AppComponent {
   ngOnInit() {
     AOS.init();
  }
+
+ 
 }

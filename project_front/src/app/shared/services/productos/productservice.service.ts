@@ -22,7 +22,7 @@ getProductos(){
     }});
   }
   
-getProducto( id:string):Observable<any>{
+getProducto(id:string):Observable<any>{
     const token = localStorage.getItem('token');
     return this.http.get(`${base_url}/productos/miProducto/` + id, { headers: {
       authorization:`Bearer ${token}`
@@ -57,6 +57,15 @@ createProduct(producto:Product):Observable<any>{
       authorization:`Bearer ${token}`
     }});
       }
+
+  updateProducto(id:string , producto:Product){
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('usuario') || '')
+    return this.http.put(`${base_url}/productos/create/`+ user.id, {body:{id:id,producto:producto}}, { headers: {
+      authorization:`Bearer ${token}`
+    }});
+
+  }
   }
 
 
