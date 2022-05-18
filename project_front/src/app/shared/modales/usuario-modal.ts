@@ -1,6 +1,6 @@
 export class Usuario{
-    static id: any;
-    constructor(   
+    static id: string;
+    constructor(  
        public nombre:string,
        public email:string,
        public password?:string,

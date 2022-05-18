@@ -43,9 +43,12 @@
                         <span class="product-price">{{product.precio}}€</span>
                         <p-button icon="pi pi-shopping-cart" (click)="showInfo()" label="Add to Cart" [disabled]="product.inventario === 'OUTOFSTOCK'"></p-button>
                         <p-button label="Ver detalle" class="p-button-warning" [routerLink]="['/myproduct',product.id]"></p-button>
-                        <span [class]="'product-badge status-' + product.inventario" [ngClass]="{'OUTOFSTOCK':product.inventario ==='OUTOFSTOCK','INSTOCK':product.inventoryStatus ==='INSTOCK','LOWSTOCK':product.inventoryStatus ==='LOWSTOCK' }">{{product.inventoryStatus}}</span>
                         <p-toast position="top-right"></p-toast>
-                    </div> 
+                        </div>
+                        <div class="inventario">
+                            <span [class]="'product-badge status-' + product.inventario" [ngClass]="{'OUTOFSTOCK':product.inventario ==='OUTOFSTOCK','INSTOCK':product.inventoryStatus ==='INSTOCK','LOWSTOCK':product.inventoryStatus ==='LOWSTOCK' }">{{product.inventoryStatus}}</span> 
+                        </div>
+                        
                 </div>
             </div>
         </ng-template>

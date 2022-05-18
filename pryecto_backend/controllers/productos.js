@@ -96,10 +96,9 @@ const createProducto = async (req, res) => {
         nombre:body.nombre,
         descripcion:body.descripcion,
         precio:body.precio,
-        cantidad:body.cantidad,
         inventario:body.inventario,
         categoria:body.categoria,
-        //imagen: req.file.filename,
+        imagen: '',
         rating:body.rating
       },
     );
@@ -109,7 +108,9 @@ const createProducto = async (req, res) => {
         nuevoProducto,
       });
     } catch (error) {
+      console.log(error);
       res.status(500).json('Error al crear producto ' + error)
+
   }
   };
 
@@ -133,6 +134,7 @@ const storage = multer.diskStorage({
           'image/gif': '.gif',
       }
       cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
+
   }
 })
 const uploadAvatar = multer({

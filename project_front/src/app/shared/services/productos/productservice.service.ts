@@ -45,10 +45,10 @@ createProduct(producto:Product):Observable<any>{
     const user = JSON.parse(localStorage.getItem('usuario') || '')
     console.log(user);
     const body = { 
+        imagen:producto.imagen,
         nombre:producto.nombre, 
-        description:producto.description, 
+        descripcion:producto.descripcion, 
         precio: producto.precio, 
-        cantidad: producto.cantidad,
         inventario:producto.inventario,
         categoria:producto.categoria,
         rating:producto.rating
@@ -62,7 +62,17 @@ createProduct(producto:Product):Observable<any>{
   updateProducto(id:string , producto:Product){
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('usuario') || '')
-    return this.http.put(`${base_url}/productos/create/`+ user.id, {body:{id:id,producto:producto}}, { headers: {
+    const body = { 
+      id:id,
+      nombre:producto.nombre, 
+      descripcion:producto.descripcion, 
+      precio: producto.precio, 
+      cantidad: producto.cantidad,
+      inventario:producto.inventario,
+      categoria:producto.categoria,
+      rating:producto.rating
+    }
+    return this.http.put(`${base_url}/productos/update/`+ user.id, body, { headers: {
       authorization:`Bearer ${token}`
     }});
   }

@@ -18,17 +18,21 @@ export class UsuariosService {
   }
 
   deleteUser(id:string):Observable<any>{
-    return this.http.delete<Usuario>(`${base_url}/delete/`+ id)
+    return this.http.delete<Usuario>(`${base_url}/usuarios/delete/`+ id)
   }
 
   updateUser(id:string, usuario:Usuario):Observable<any>{
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('usuario') || '')
     const body = {
+      id:id,
       nombre:usuario.nombre, 
       email:usuario.email, 
       password:usuario.password,
-    
     }
-    return this.http.put(`${base_url}/update`+ id  + usuario,body);
+    return this.http.put(`${base_url}/usuarios/update/`+ user.id ,body,{ headers: {
+      authorization:`Bearer ${token}`
+    }});
   }
 
 }

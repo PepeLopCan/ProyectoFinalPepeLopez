@@ -1,15 +1,14 @@
-<form [formGroup]="crearProducto"> 
-    <div class="field">
-        <label for="name">Imagen</label>
-        <p-fileUpload formControlName="imagen" mode="basic" chooseLabel="Cambiar imagen" name="demo[]" url="./upload.php" class="w-4" accept="image/*" (onUpload)="onBasicUpload($event)" [auto]="true"></p-fileUpload>
-    </div>         
+<form [formGroup]="crearProducto">
+   <div class="field">
+        <p-fileUpload #fubauto mode="basic" name="demo[]"  accept="image/*" (onSelect)="capturarFile($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+    </div>       
 <div class="field">
     <label for="name">Name</label>
     <input type="text"formControlName="nombre" pInputText id="name" required autofocus />
 </div>
 <div class="field">
-    <label for="description">Description</label>
-    <textarea id="description" formControlName="description" pInputTextarea required rows="3" cols="20"></textarea>
+    <label for="descripcion">Description</label>
+    <textarea id="descripcion" formControlName="descripcion" pInputTextarea required rows="3" cols="20"></textarea>
 </div>
 <div class="field">
     <label for="Inventario">Inventario</label>
@@ -30,6 +29,6 @@
     </div>
 </div>
 <div class="formgrid grid flex justify-content-center mt-3">
-        <p-button label="Ver detalle" class="p-button-warning" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="confirm($event)"></p-button>
+        <p-button label="Crear"  icon="pi pi-check" class="p-button-text" (click)="confirm($event)"></p-button>
 </div>
 </form>

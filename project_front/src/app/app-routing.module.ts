@@ -6,9 +6,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'tienda',
-    loadChildren: () => import('./tienda/tienda.module').then(mod => mod.TiendaModule)
-  },
-  {path: 'login', component:LoginComponent}
+    loadChildren: () => import('./tienda/tienda.module').then(mod => mod.TiendaModule)},
+  {path: 'auth',
+  loadChildren: () => import('./auth/auth.module').then(mod => mod.AuthModule)}
 ];
 
 @NgModule({

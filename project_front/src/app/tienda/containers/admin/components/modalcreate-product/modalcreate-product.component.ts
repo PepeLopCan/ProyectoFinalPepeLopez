@@ -14,13 +14,14 @@ import { ConfirmationService } from 'primeng/api';
 export class ModalcreateProductComponent implements OnInit {
 
 producto:Product[]=[];
-  inventario: Array<string> = ['OUTOFSTOCK', 'LOWSTOCK', 'INSTOCK'];
-  categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
+public archivos: any =[];
+imagen:any;
+inventario: Array<string> = ['OUTOFSTOCK', 'LOWSTOCK', 'INSTOCK'];
+categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
 
   public crearProducto = new FormGroup({
-    imagen: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
+    descripcion: new FormControl('', Validators.required),
     inventario: new FormControl('INSTOCK', Validators.required),
     categoria: new FormControl('LongBoards', Validators.required),
     precio: new FormControl('', Validators.required),
@@ -36,7 +37,13 @@ producto:Product[]=[];
   ngOnInit(): void {
   }
 
-
+capturarFile(event:any) {
+    this.imagen = event.files;
+    console.log(event)
+    console.log(this.imagen)
+    
+  } 
+ 
   
   confirm(event: any) {
     console.log(event);
@@ -48,16 +55,14 @@ producto:Product[]=[];
     });
   }
 
-
   crear(){
     const producto:Product ={
-      imagen: this.crearProducto.get('imagen')?.value,
+      imagen:this.imagen,
       nombre: this.crearProducto.get('nombre')?.value,
-      description: this.crearProducto.get('description')?.value,
+      descripcion: this.crearProducto.get('descripcion')?.value,
       inventario: this.crearProducto.get('inventario')?.value,
       categoria: this.crearProducto.get('categoria')?.value,
       precio: this.crearProducto.get('precio')?.value,
-      cantidad: this.crearProducto.get('cantidad')?.value,
       rating: this.crearProducto.get('rating')?.value,
     }
     this.productService.createProduct(producto).subscribe((resp)=>{
@@ -65,11 +70,4 @@ producto:Product[]=[];
       console.log(resp);
     })
   }
-
-  onBasicUpload(event:any) {
-
-    for(let file of event.files) {
-      this.producto.push(file);
-  }
-}
 }

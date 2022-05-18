@@ -49,7 +49,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private producService:ProductserviceService,
     private messageService: MessageService,public dialogService: DialogService,
-    private confirmationService: ConfirmationService,){ 
+    private confirmationService: ConfirmationService){ 
       this.productDialog=false;
       this.submitted=false;  
     }
@@ -126,9 +126,8 @@ export class AdminComponent implements OnInit {
   show() {
     const modal = this.dialogService.open(ModalcreateProductComponent, {
       header:"Crear producto",
-      width: '450px',
+      width: '550px',
       height: '700px',
-      dismissableMask: true,
     });
     modal.onClose.subscribe((product: boolean) =>{
         if (product== true) {
@@ -145,7 +144,7 @@ export class AdminComponent implements OnInit {
         products:product
       },
       header:"Actualizar producto",
-      width: '450px',
+      width: '550px',
       height: '700px',
       dismissableMask: true,
     });

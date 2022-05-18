@@ -89,7 +89,7 @@ const deleteUser = async (req, res) => {
 };
 const createUser = async (req, res) => {
   try {
-    let {nombre,email,password,rol} = req.body;
+    let {nombre,email,password,rol,imagen} = req.body;
 
     const existeEmail = await usuario.findOne({where: {email}});
 

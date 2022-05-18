@@ -14,17 +14,17 @@
             <label for="email1" class="block text-900 font-medium mb-2">Email</label>
             <div class="input">{{user.email}}</div>
     
-            <label for="password1" class="block text-900 font-medium mb-2">Password</label>
-            <div class="input">{{user.password}}</div>
-
     <div class="row justify-content-center">
-        <button pButton pRipple label="Actualizar" (click)="show()" icon="pi pi-pencil" class="col-6 w-4 m-3"style="background-color:rgb(24, 173, 210); border: 1px solid rgb(24, 173, 210);"></button>
-        <button pButton pRipple type="button" icon="pi pi-times" label="Borrar" class="col-6 w-4 m-3 p-button-danger" ></button>
+        <button pButton pRipple label="Actualizar" (click)="show(user)" icon="pi pi-pencil" class="col-6 w-4 m-3"style="background-color:rgb(24, 173, 210); border: 1px solid rgb(24, 173, 210);"></button>
+        <button pButton pRipple type="button" icon="pi pi-times" label="Borrar" class="col-6 w-4 m-3 p-button-danger" (click)="confirm($event,user)"></button>
     </div>
 
         </div>
         </div>
         </section>
+        <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle" acceptLabel="Si"
+acceptButtonStyleClass="p-button-sm acceptButton" rejectButtonStyleClass="p-button-sm p-button-secondary">
+</p-confirmDialog>
     
     
     
