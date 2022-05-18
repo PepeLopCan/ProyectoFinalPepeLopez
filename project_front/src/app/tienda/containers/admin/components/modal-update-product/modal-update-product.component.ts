@@ -17,6 +17,9 @@ export class ModalUpdateProductComponent implements OnInit {
   formEdit: any;
   data:any;
   productos:Product[]=[];
+  inventario: Array<string> = ['OUTOFSTOCK', 'LOWSTOCK', 'INSTOCK'];
+  categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
+  public archivos: any =[];
 
   constructor(
     private productService:ProductserviceService ,
@@ -28,17 +31,29 @@ export class ModalUpdateProductComponent implements OnInit {
 
       this.data = this.config.data
       this.formEdit = new FormGroup({
-        nombre: new FormControl(this.data?.productos?.nombre, Validators.required),
-  
+        nombre: new FormControl(this.data?.products?.nombre, Validators.required),
+        descripcion: new FormControl(this.data?.products?.descripcion, Validators.required),
+        inventario: new FormControl(this.data?.products?.inventario, Validators.required),
+        categoria: new FormControl(this.data?.products?.categoria, Validators.required),
+        precio: new FormControl(this.data?.products?.precio, Validators.required),
+        rating: new FormControl(this.data?.products?.rating, Validators.required),
      })
      console.log(this.data);
-     
+     console.log(this.formEdit);
     }
 
       
   ngOnInit(): void {
     
   }
+
+  capturarFile(event:any) {
+    const archivoCaptuado = event.target.files[0];
+    this.archivos.push(archivoCaptuado)
+    console.log(event.target.files);
+  }
+  
+    
 
   editar(id:string){
     console.log(this.formEdit.value);

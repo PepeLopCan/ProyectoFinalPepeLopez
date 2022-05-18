@@ -4,23 +4,24 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { UsuariosService } from 'src/app/shared/services/usuarios/usuarios.service';
 import { ModalEditUsuarioComponent } from '../component/modal-edit-usuario/modal-edit-usuario.component';
 import { Usuario } from 'src/app/shared/modales/usuario-modal';
-import { MessageService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-mi-perfil',
   templateUrl: './mi-perfil.component.html',
   styleUrls: ['./mi-perfil.component.css'],
-  providers: [DialogService, MessageService]
+  providers: [MessageService, ConfirmationService,DialogService]
 })
 export class MiPerfilComponent implements OnInit {
  value2:string;
  usuarios: Usuario[]=[];
  id:any;
   user = JSON.parse(localStorage.getItem('usuario') || '')
+  usuario = JSON.stringify(localStorage.getItem('usuario') || '')
 
-  constructor( private usuarioService:UsuariosService,  public dialogService: DialogService, public messageService: MessageService,private route: ActivatedRoute ) {
+  constructor( private usuarioService:UsuariosService,  public dialogService: DialogService, public messageService: MessageService,private route: ActivatedRoute,  private confirmationService: ConfirmationService,private router: Router ) {
     this.value2="Pepe";
    }
 
@@ -31,8 +32,12 @@ export class MiPerfilComponent implements OnInit {
 
   onBasicUpload(event:any) {
 }
-show() {
+show(user:any) {
   const modal = this.dialogService.open(ModalEditUsuarioComponent, {
+    data: {
+      user:user
+    },
+
     header: 'Editar mi Perfil',
     width: '400px',
     height: '400px',
@@ -42,6 +47,7 @@ show() {
   modal.onClose.subscribe((product: boolean) =>{
       if (product) {
         this.messageService.add({severity:'info', summary: 'Info', detail: 'Perfil Actualizado'});
+        this.getMiUsuario();
       }
   });
 }
@@ -53,7 +59,28 @@ getMiUsuario(){
     console.log(this.usuarios);
   })
 }
+
+deleteUsuario(id:string){
+  this.usuarioService.deleteUser(id).subscribe((resp:any)=>{
+    this.router.navigateByUrl('/login');
+    console.log(this.usuarios);
+  })
 }
+
+confirm(event: any, usuario:any) {
+  console.log(event);
+  this.confirmationService.confirm({
+    message: `¿Estas seguro que deseas eliminar al usuario ${usuario.nombre}?`,
+    accept: () => {
+      this.deleteUsuario(usuario.id)
+      console.log(usuario.id);
+    }
+  });
+}
+
+}
+
+
 
 
 

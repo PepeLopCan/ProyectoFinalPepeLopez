@@ -81,7 +81,7 @@
     
         .product-list-action {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
 
             .OUTOFSTOCK{
               background: #FFCDD2;
@@ -101,6 +101,10 @@
               padding:2px 5px ;
               border-radius: 3px;
             }
+        }
+        .inventario{
+          display: flex;
+          flex-wrap: wrap ;
         }
     
         .p-button {

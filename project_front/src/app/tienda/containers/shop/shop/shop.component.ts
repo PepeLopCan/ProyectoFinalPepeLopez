@@ -38,11 +38,11 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
     this.getProductos();
     this.sortOptions = [
-        {label: 'Price High to Low', value: '!price'},
-        {label: 'Price Low to High', value: 'price'},
-        {label: 'Categoria', value: 'category'},
-        {label: 'Stock', value: 'inventoryStatus'},
-        {label: 'Stock bajo', value: '!inventoryStatus'},
+        {label: 'Price High to Low', value: '!precio'},
+        {label: 'Price Low to High', value: 'precio'},
+        {label: 'Categoria', value: 'categoria'},
+        {label: 'Stock', value: 'inventario'},
+        {label: 'Stock bajo', value: '!inventario'},
         {label: 'Peores Valorados', value: 'rating'},
         {label: 'Mejores Valorados', value: '!rating'},
     ];
