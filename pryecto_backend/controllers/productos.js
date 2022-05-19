@@ -98,7 +98,7 @@ const createProducto = async (req, res) => {
         precio:body.precio,
         inventario:body.inventario,
         categoria:body.categoria,
-        imagen: '',
+        imagen: imagenURL.imagenURL,
         rating:body.rating
       },
     );

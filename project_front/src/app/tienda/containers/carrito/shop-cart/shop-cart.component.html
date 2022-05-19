@@ -1,4 +1,4 @@
-<section id="cart-container" class="container my-5">
+<section  id="cart-container" class="container my-5">
         <table width="100%">
             <thead>
                 <tr>
@@ -11,13 +11,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngFor="let product of productos">
                     <td><i class="pi pi-trash"></i></td>
-                    <td><img src="../../../../../assets/Surf/11.jpg" alt=""></td>
+                    <td><img [src]="'http://localhost:3000/public/images/product'+ product.imagen" alt=""></td>
                     <td>
-                        <h5>Tabla de surf</h5>
+                        <h5>{{product.nombre}}</h5>
                     </td>
-                    <td><h5>200€</h5></td>
+                    <td><h5>{{product.precio}}</h5></td>
                     <td> <p-inputNumber [(ngModel)]="value19" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
                         decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
                         </p-inputNumber></td>
