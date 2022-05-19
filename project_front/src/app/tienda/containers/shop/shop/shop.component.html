@@ -69,7 +69,7 @@
                     </div>
                     <div class="product-grid-item-bottom">
                         <span class="product-price">{{product.precio}}€</span>
-                        <p-button pRipple (click)="addToCart(product)" icon="pi pi-shopping-cart" [disabled]="product.inventario === 'OUTOFSTOCK'"></p-button>
+                        <p-button pRipple (click)="addCarrito(product)" icon="pi pi-shopping-cart" [disabled]="product.inventario === 'OUTOFSTOCK'"></p-button>
                         <p-button label="Ver detalle" class="p-button-warning" [routerLink]="['/myproduct',product.id]"></p-button>
                         <p-toast position="top-right"></p-toast>
                     </div>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../interfaces/product';
 import { environment } from 'src/environments/environment';
@@ -13,7 +13,11 @@ const base_url = environment.base_url.toLowerCase();
 export class ProductserviceService {
   cartItems=[];
   producto:Product[]=[];
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  
+
+   }
 
 
 getProductos(){
@@ -75,6 +79,42 @@ createProduct(producto:Product):Observable<any>{
     return this.http.put(`${base_url}/productos/update/`+ user.id, body, { headers: {
       authorization:`Bearer ${token}`
     }});
+  }
+
+  getProductosLocal(){
+    return this.getProductosLocal;
+  }
+
+  getTasks() {
+    if(localStorage.getItem('producto') === null) {
+      this.producto = [];
+    } else {
+      this.producto = JSON.parse(localStorage.getItem('producto') || '');
+    }
+    return this.producto;
+  }
+
+  addTask(product: Product){
+    this.producto.push(product);
+    let producto = [];
+    if(localStorage.getItem('producto') === null) {
+      producto = [];
+      producto.push(product);
+      localStorage.setItem('producto', JSON.stringify(producto));
+    } else {
+      producto = JSON.parse(localStorage.getItem('producto') || '');
+      producto.push(product); 
+      localStorage.setItem('producto', JSON.stringify(producto));
+    }
+  }
+
+  deleteTask(product: Product) {
+    for (let i = 0; i < this.producto.length; i++) {
+      if (product == this.producto[i]) {
+        this.producto.splice(i, 1);
+        localStorage.setItem('producto', JSON.stringify(this.producto));
+      }
+    }
   }
 
   }

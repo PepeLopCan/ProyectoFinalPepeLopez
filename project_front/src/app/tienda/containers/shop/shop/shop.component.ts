@@ -71,8 +71,9 @@ getProductos() {
   });
 }
 
-addToCart(product:Product){
+addCarrito(product:Product){
 
+  this.productService.addTask(product)
 }
 
 }

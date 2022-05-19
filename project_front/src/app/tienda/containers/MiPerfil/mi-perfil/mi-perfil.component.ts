@@ -62,6 +62,8 @@ getMiUsuario(){
 
 deleteUsuario(id:string){
   this.usuarioService.deleteUser(id).subscribe((resp:any)=>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
     this.router.navigateByUrl('/login');
     console.log(this.usuarios);
   })
