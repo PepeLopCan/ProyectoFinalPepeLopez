@@ -12,11 +12,11 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[];
-  producto:producto[]=[];
-    dialogService: any;
-    usuarios:Usuario[]=[];
+  dialogService: any;
+  usuarios:Usuario[]=[];
   isLoggedIn$?: Observable<boolean>;  
   user = JSON.parse(localStorage.getItem('usuario') || '') 
+  //productCarrito = JSON.parse(localStorage.getItem('producto') || '')
   constructor(private router:Router, public authService:AuthService) {
 
     
@@ -65,11 +65,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-
   }
 
   logout(){
     this.authService.logout()
 
+  }
+
+  admin(){
+      this.router.navigateByUrl('/tienda/admin');
   }
 }

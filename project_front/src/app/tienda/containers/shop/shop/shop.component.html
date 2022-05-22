@@ -41,7 +41,7 @@
                     </div>
                     <div class="product-list-action">
                         <span class="product-price">{{product.precio}}€</span>
-                        <p-button icon="pi pi-shopping-cart" (click)="showInfo()" label="Add to Cart" [disabled]="product.inventario === 'OUTOFSTOCK'"></p-button>
+                        <p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="product.inventario === 'OUTOFSTOCK'"></p-button>
                         <p-button label="Ver detalle" class="p-button-warning" [routerLink]="['/myproduct',product.id]"></p-button>
                         <p-toast position="top-right"></p-toast>
                         </div>
@@ -71,13 +71,11 @@
                         <span class="product-price">{{product.precio}}€</span>
                         <p-button pRipple (click)="addCarrito(product)" icon="pi pi-shopping-cart" [disabled]="product.inventario === 'OUTOFSTOCK'"></p-button>
                         <p-button label="Ver detalle" class="p-button-warning" [routerLink]="['/myproduct',product.id]"></p-button>
-                        <p-toast position="top-right"></p-toast>
                     </div>
                 </div>
             </div>
         </ng-template>
     </p-dataView>
-    <a href=""></a>
 </div>
-
+<p-toast position="top-right"></p-toast>
 

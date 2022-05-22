@@ -1,4 +1,4 @@
-<section  id="cart-container" class="container my-5">
+<section  id="cart-container" class="container">
         <table width="100%">
             <thead>
                 <tr>
@@ -11,17 +11,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of productos">
-                    <td><i class="pi pi-trash"></i></td>
-                    <td><img [src]="'http://localhost:3000/public/images/product'+ product.imagen" alt=""></td>
+                <tr *ngFor="let product of productos;">
+                    <td><button (click)="deleteCarrito(product)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button></td>
+                    <td><img [src]="'http://localhost:3000/public/images/productos/'+ product.imagen" alt=""></td>
                     <td>
                         <h5>{{product.nombre}}</h5>
                     </td>
-                    <td><h5>{{product.precio}}</h5></td>
-                    <td> <p-inputNumber [(ngModel)]="value19" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
-                        decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                    <td><h5>{{product.precio | currency}}€</h5></td>
+                    <td><p-inputNumber type="number" [(ngModel)]="value" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                        decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"  [min]="0" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
                         </p-inputNumber></td>
-                    <td><h5>200€</h5></td>
+                    <td><h5>{{value + product.precio}}€</h5></td>
             </tbody>
         </table>
     </section>
@@ -45,13 +45,14 @@
                         <hr class="second-hr">
                         <div class="d-flex justify-content-between">
                             <h6>Total</h6>
-                            <p>200€</p>
+                            <p>100€</p>
                         </div>
-                        <p-button label="Comprar" pRipple (click)="showSuccess()"class="ml-1"></p-button>
+                        <p-button label="Comprar" pRipple class="ml-1"></p-button>
                         <p-toast position="top-right"></p-toast>
                     </div>
             </div>
         </div>
     </section>
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
 

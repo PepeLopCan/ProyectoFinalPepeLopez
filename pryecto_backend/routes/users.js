@@ -6,7 +6,7 @@ const {token,ValiarAdmin_Role  }= require ('../middleware/validar-token');
 router.get('/todos', getAllUsers);
 router.get('/misPedidos/:id', mostrarPedidos);
 router.get('/miUsuario/:id', token, getUser);
-router.post('/create', uploadAvatar.single('imagen'),createUser);
+router.post('/create',createUser);
 router.put('/update/:id', token,updateUser);
 router.delete('/delete/:id', deleteUser);
 

@@ -60,9 +60,7 @@ onSortChange(event:any) {
         this.sortField = value;
     }  
 } 
-showInfo() {
-  this.messageService.add({severity:'info', summary: 'Info', detail: 'Añadido al carrito'});
-}
+
 
 getProductos() {
   this.productService.getProductos().subscribe((resp: any) => {
@@ -72,8 +70,8 @@ getProductos() {
 }
 
 addCarrito(product:Product){
-
   this.productService.addTask(product)
+  this.messageService.add({severity:'info', summary: 'Info', detail: 'Añadido al carrito'});
 }
 
 }
