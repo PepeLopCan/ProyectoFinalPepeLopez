@@ -107,7 +107,7 @@ const createUser = async (req, res) => {
       nombre:nombre,
       email: email,
       password:password,
-      imagen: req.file.filename,
+      //imagen: req.file.filename,
       rol:rol
     });
 

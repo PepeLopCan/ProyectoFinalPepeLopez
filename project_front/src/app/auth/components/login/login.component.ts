@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { Usuario } from 'src/app/shared/modales/usuario-modal';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { producto } from 'src/app/shared/modales/producto-modal';
+import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   usario:Usuario[]=[];
+  producto:Product[]=[]
   isLoggedin: boolean = false;
 
   public loginForm = new FormGroup({
