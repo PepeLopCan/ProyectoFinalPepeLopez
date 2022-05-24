@@ -12,7 +12,7 @@ import { ConfirmationService } from 'primeng/api';
   styleUrls: ['./modalcreate-product.component.scss']
 })
 export class ModalcreateProductComponent implements OnInit {
-
+cantidad:number=0;
 producto:Product[]=[];
 public archivos: any =[];
 imagenURL:any;
@@ -24,6 +24,7 @@ categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
     descripcion: new FormControl('', Validators.required),
     inventario: new FormControl('INSTOCK', Validators.required),
     categoria: new FormControl('LongBoards', Validators.required),
+    cantidad: new FormControl('', Validators.required),
     precio: new FormControl('', Validators.required),
     rating: new FormControl('', Validators.required),
     
@@ -61,6 +62,7 @@ capturarFile(event:any) {
       descripcion: this.crearProducto.get('descripcion')?.value,
       inventario: this.crearProducto.get('inventario')?.value,
       categoria: this.crearProducto.get('categoria')?.value,
+      cantidad: this.crearProducto.get('cantidad')?.value,
       precio: this.crearProducto.get('precio')?.value,
       rating: this.crearProducto.get('rating')?.value,
     }

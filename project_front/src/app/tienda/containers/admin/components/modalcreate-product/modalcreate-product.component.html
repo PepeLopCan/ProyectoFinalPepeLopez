@@ -23,6 +23,12 @@
         <label for="categoria">Categoria</label>
         <p-dropdown  inputId="categoria" [options]="categoria" formControlName="categoria" placeholder="categoria"></p-dropdown>
     </div>
+    <div class="field">
+        <label for="categoria">Cantidad</label>
+        <p-inputNumber type="number" [(ngModel)]="cantidad" formControlName="cantidad" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+        decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"  [min]="0" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+        </p-inputNumber>
+    </div>
     <div class="field col">
         <label for="quantity">Rating</label>
         <p-rating formControlName="rating"></p-rating>

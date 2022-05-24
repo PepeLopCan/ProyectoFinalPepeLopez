@@ -17,11 +17,11 @@
                     <td>
                         <h5>{{product.nombre}}</h5>
                     </td>
-                    <td><h5>{{product.precio | currency}}€</h5></td>
-                    <td><p-inputNumber type="number" [(ngModel)]="value" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                    <td><h5>{{product.precio | currency:'EUR'}}</h5></td>
+                    <td><p-inputNumber type="number" [(ngModel)]="product.cantidad" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
                         decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"  [min]="0" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
                         </p-inputNumber></td>
-                    <td><h5>{{value + product.precio}}€</h5></td>
+                    <td><h5>{{product.cantidad! * product.precio! | currency:'EUR' }}</h5></td>
             </tbody>
         </table>
     </section>
@@ -29,10 +29,10 @@
         <div class="row">
             <div class="cupon col-lg-6 col-md-6 col-12 mb-4">
                 <div>
-                    <h5>CUPON</h5>
-                    <p>Introduce tu cupon</p>
+                    <h5>APLICAR PRECIOS</h5>
+                    <p>CALCULO DEL CARRITO</p>
                     <input type="text" pInputText>
-                    <p-button label="Aplicar" class="ml-1"></p-button>
+                    <p-button pRipple label="Aplicar" (click)="operacion()" class="ml-1"></p-button>
                 </div>
             </div>
             <div class="total col-lg-6 col-md-6 col-12 mb-4">
@@ -40,12 +40,14 @@
                         <h5>CARRITO TOTAL</h5>
                         <div class="d-flex justify-content-between">
                             <h6>Subtotal</h6>
-                            <p>200€</p>
+                            <p>{{final | currency:'EUR'}}</p>
                         </div>
                         <hr class="second-hr">
                         <div class="d-flex justify-content-between">
                             <h6>Total</h6>
-                            <p>100€</p>
+                            <p >{{taxas | currency:'EUR'}}</p>
+                            <p>2,95€ en gastos de envios</p>
+
                         </div>
                         <p-button label="Comprar" pRipple class="ml-1"></p-button>
                         <p-toast position="top-right"></p-toast>

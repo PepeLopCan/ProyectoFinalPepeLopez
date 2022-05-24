@@ -14,10 +14,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class ShopCartComponent implements OnInit {
 
-  value:any;
+  value:number = 0;
+  total:number=0;
+  final:number = 0;
   productos:Product[]=[];
+  array:number[]=[]
+  taxes:number =2.95;
+  taxas:number = 0;
+  
 
-  constructor(private router:Router,private confirmationService: ConfirmationService,private messageService: MessageService, private primengConfig: PrimeNGConfig, private productService:ProductserviceService) { }
+  constructor(private router:Router,private confirmationService: ConfirmationService,private messageService: MessageService, private primengConfig: PrimeNGConfig, private productService:ProductserviceService) {
+    
+   }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -26,13 +34,6 @@ export class ShopCartComponent implements OnInit {
     console.log(this.productos);
     
   }
-
-  lado = 1;
-
-  cambiaLado(valor:any) {
-    this.lado = valor++;
-  }
-  
 
   /*  validateInput( event:any, number:number){
      const qty = +event.target.value;
@@ -53,7 +54,17 @@ export class ShopCartComponent implements OnInit {
      this.productService.deleteTask(productos);
    }
 
+  
+   operacion(){
+    this.array =[];
+    for(let i in this.productos){
+      this.total = this.productos[i].cantidad! * this.productos[i].precio!;
+      this.array.push(this.total)
+      console.log(this.array)
+    }
+    const reducer = (accumulator: any, curr: any) => accumulator + curr;
+    this.final = this.array.reduce(reducer);
+    this.taxas = this.final + this.taxes;
 
- 
-
+   }
 }
