@@ -19,7 +19,11 @@ export class AuthService {
   loggedIn() {
     const local=localStorage.getItem('token'); // {2}
 
-    return local;
+    if (local != null){
+      return true;
+    }else {
+      return false;
+    }
   }
   
 

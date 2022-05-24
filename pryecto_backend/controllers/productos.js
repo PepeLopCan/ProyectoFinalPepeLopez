@@ -90,7 +90,12 @@ const deleteProducto = async (req, res) => {
 };
 const createProducto = async (req, res) => {
   try {
+    //console.log(req)
     const body = req.body;
+    
+    //const file = req.file
+    console.log(req.body)
+  
     let nuevoProducto = await producto.create(
       {
         nombre:body.nombre,
@@ -98,15 +103,16 @@ const createProducto = async (req, res) => {
         precio:body.precio,
         inventario:body.inventario,
         categoria:body.categoria,
-        imagen: imagenURL.imagenURL,
+        imagen:body.url,
         rating:body.rating
       },
     );
       res.json({
         ok: true,
         msg: "Producto creado",
-        nuevoProducto,
+        nuevoProducto
       });
+      //console.log(nuevoProducto);
     } catch (error) {
       console.log(error);
       res.status(500).json('Error al crear producto ' + error)
@@ -114,13 +120,6 @@ const createProducto = async (req, res) => {
   }
   };
 
-const añadirCarrito = async (req, res) => {
-  const { usuarioId } = req.params;
-  const producto = await producto.findAll({
-    where: { usuarioId },
-  });
-  res.json({ producto });
-};
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -140,7 +139,7 @@ const storage = multer.diskStorage({
 const uploadAvatar = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
-      console.log(file.mimetype)
+
       if(file.mimetype === 'image/jpeg' || 
       file.mimetype === 'image/jpg' || 
       file.mimetype === 'image/png' ||
@@ -159,6 +158,5 @@ module.exports = {
   updateProducto,
   deleteProducto,
   createProducto,
-  añadirCarrito,
   uploadAvatar
 };

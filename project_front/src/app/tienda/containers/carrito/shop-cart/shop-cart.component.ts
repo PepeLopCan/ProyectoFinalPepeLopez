@@ -14,10 +14,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class ShopCartComponent implements OnInit {
 
-  value:any;
+  value:number = 0;
+  total:number=0;
+  final:number = 0;
   productos:Product[]=[];
+  array:number[]=[]
+  taxes:number =2.95;
+  taxas:number = 0;
+  
 
-  constructor(private router:Router,private confirmationService: ConfirmationService,private messageService: MessageService, private primengConfig: PrimeNGConfig, private productService:ProductserviceService) { }
+  constructor(private router:Router,private confirmationService: ConfirmationService,private messageService: MessageService, private primengConfig: PrimeNGConfig, private productService:ProductserviceService) {
+    
+   }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -27,33 +35,29 @@ export class ShopCartComponent implements OnInit {
     
   }
 
-  lado = 1;
-
-  cambiaLado(valor:any) {
-    this.lado = valor++;
-  }
-  
-
-  /*  validateInput( event:any, number:number){
-     const qty = +event.target.value;
-     if (qty < 1) {
-       event.target.value = this.productos[number].cantidad;
-       return;
-     }
-     this.QtyUpdated(qty, number)
-   }
-
-   private QtyUpdated(qty:number, i:number){
-     this.productos[i].cantidad = qty;
-
-     this.productService.setCarritoData(this.productos);
-   } */
-
   deleteCarrito(productos:Product){
      this.productService.deleteTask(productos);
    }
 
+   operacion(){
+    this.array =[];
+    for(let i in this.productos){
+      this.total = this.productos[i].cantidad! * this.productos[i].precio!;
+      this.array.push(this.total)
+      console.log(this.array)
+    }
+    const reducer = (accumulator: any, curr: any) => accumulator + curr;
+    this.final = this.array.reduce(reducer);
+    this.taxas = this.final + this.taxes;
 
- 
+   }
 
+   confirm(event: any,) {
+    this.confirmationService.confirm({
+      message: `¿Esta seguro de que quiere realizar la compra ?   Precio(${this.taxas})`,
+      accept: () => {
+        this.router.navigateByUrl('/tienda/shop');
+      }
+    });
+  }
 }

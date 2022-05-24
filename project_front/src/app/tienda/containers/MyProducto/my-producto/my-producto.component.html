@@ -12,7 +12,7 @@
                 <p-inputNumber [(ngModel)]="value19" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
                 decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
                 </p-inputNumber>
-                <p-button class="ml-2"label="Añadir al carrito" icon="pi pi-shopping-cart" (click)="showInfo()" iconPos="right"></p-button>
+                <p-button class="ml-2"label="Añadir al carrito" icon="pi pi-shopping-cart" (click)="addCarrito(producto)" iconPos="right"></p-button>
                 <h4 class="mt-5 mb-5">Descripcion</h4>
                 <span>{{producto.descripcion}}</span>
         </div>

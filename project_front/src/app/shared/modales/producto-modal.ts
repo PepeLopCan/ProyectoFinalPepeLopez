@@ -7,8 +7,9 @@ export class producto{
        public estado?: boolean,
        public valoracion?: number,
        public precio?: number,
-        public imagen?:string
+        public imagen?: string
         ){}
+        
     }
   
 

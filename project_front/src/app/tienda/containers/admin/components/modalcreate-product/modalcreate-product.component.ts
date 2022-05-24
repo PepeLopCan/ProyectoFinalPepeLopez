@@ -15,7 +15,8 @@ export class ModalcreateProductComponent implements OnInit {
 
 producto:Product[]=[];
 public archivos: any =[];
-imagenURL:any;
+imgName:any;
+
 inventario: Array<string> = ['OUTOFSTOCK', 'LOWSTOCK', 'INSTOCK'];
 categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
 
@@ -38,9 +39,8 @@ categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
   }
 
 capturarFile(event:any) {
-    this.imagenURL = event.files;
-    console.log(this.imagenURL)
-    
+    this.imgName = event.currentFiles[0];
+    console.log(this.imgName)
   } 
  
   
@@ -55,8 +55,10 @@ capturarFile(event:any) {
   }
 
   crear(){
+ 
     const producto:Product ={
-      imagen:this.imagenURL,
+      url:this.imgName.name,
+      imagen:this.imgName,
       nombre: this.crearProducto.get('nombre')?.value,
       descripcion: this.crearProducto.get('descripcion')?.value,
       inventario: this.crearProducto.get('inventario')?.value,

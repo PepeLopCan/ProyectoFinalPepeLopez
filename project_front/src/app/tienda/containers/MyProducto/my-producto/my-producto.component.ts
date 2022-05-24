@@ -35,4 +35,8 @@ export class MyProductoComponent implements OnInit {
       console.log(this.producto);
     })
   }
+  addCarrito(product:Product){
+    this.productService.addTask(product)
+    this.messageService.add({severity:'info', summary: 'Info', detail: 'Añadido al carrito'});
+  }
 }
