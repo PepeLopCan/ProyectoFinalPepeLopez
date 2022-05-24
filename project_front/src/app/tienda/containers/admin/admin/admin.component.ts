@@ -35,6 +35,8 @@ export class AdminComponent implements OnInit {
 
   stock: Array<string>=['STOCK,LOWSTOCK,OUTOFSTOCK'];
 
+  
+
  
  
   public productForm = new FormGroup({
@@ -57,6 +59,9 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.getProductos();
 
+    for( let i in this.products){
+
+    }
 
     this.basicData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -76,10 +81,10 @@ export class AdminComponent implements OnInit {
       
   };
   this.data = {
-    labels: ['OUTOFSTOCK','STOCK','LOWSTOCK'],
+    labels: ['OUTOFSTOCK','INSTOCK','LOWSTOCK'],
     datasets: [
         {
-            data: [150, 150, 150],
+            data: [50, 250, 150],
             backgroundColor: [
                 "#FFCDD2",
                 "#C8E6C9",

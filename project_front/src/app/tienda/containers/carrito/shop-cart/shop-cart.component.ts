@@ -35,26 +35,10 @@ export class ShopCartComponent implements OnInit {
     
   }
 
-  /*  validateInput( event:any, number:number){
-     const qty = +event.target.value;
-     if (qty < 1) {
-       event.target.value = this.productos[number].cantidad;
-       return;
-     }
-     this.QtyUpdated(qty, number)
-   }
-
-   private QtyUpdated(qty:number, i:number){
-     this.productos[i].cantidad = qty;
-
-     this.productService.setCarritoData(this.productos);
-   } */
-
   deleteCarrito(productos:Product){
      this.productService.deleteTask(productos);
    }
 
-  
    operacion(){
     this.array =[];
     for(let i in this.productos){
@@ -67,4 +51,13 @@ export class ShopCartComponent implements OnInit {
     this.taxas = this.final + this.taxes;
 
    }
+
+   confirm(event: any,) {
+    this.confirmationService.confirm({
+      message: `¿Esta seguro de que quiere realizar la compra ?   Precio(${this.taxas})`,
+      accept: () => {
+        this.router.navigateByUrl('/tienda/shop');
+      }
+    });
+  }
 }

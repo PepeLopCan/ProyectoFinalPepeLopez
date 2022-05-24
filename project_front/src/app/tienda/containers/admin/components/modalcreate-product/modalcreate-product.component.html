@@ -1,6 +1,9 @@
 <form [formGroup]="crearProducto">
    <div class="field">
-        <p-fileUpload #fubauto mode="basic" name="demo[]"  accept="image/*" (onSelect)="capturarFile($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+        
+   <!--  <input type="file"
+    id="avatar" name="avatar" (onSelect)="capturarFile($event)"> -->
+    <p-fileUpload #fubauto mode="basic" name="demo[]"  accept="image/*" (onSelect)="capturarFile($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
     </div>       
 <div class="field">
     <label for="name">Name</label>
@@ -22,12 +25,6 @@
     <div class="field">
         <label for="categoria">Categoria</label>
         <p-dropdown  inputId="categoria" [options]="categoria" formControlName="categoria" placeholder="categoria"></p-dropdown>
-    </div>
-    <div class="field">
-        <label for="categoria">Cantidad</label>
-        <p-inputNumber type="number" [(ngModel)]="cantidad" formControlName="cantidad" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
-        decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"  [min]="0" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
-        </p-inputNumber>
     </div>
     <div class="field col">
         <label for="quantity">Rating</label>

@@ -32,7 +32,7 @@
                     <h5>APLICAR PRECIOS</h5>
                     <p>CALCULO DEL CARRITO</p>
                     <input type="text" pInputText>
-                    <p-button pRipple label="Aplicar" (click)="operacion()" class="ml-1"></p-button>
+                    <p-button pRipple label="Calcular" (click)="operacion()" class="ml-1"></p-button>
                 </div>
             </div>
             <div class="total col-lg-6 col-md-6 col-12 mb-4">
@@ -49,12 +49,12 @@
                             <p>2,95€ en gastos de envios</p>
 
                         </div>
-                        <p-button label="Comprar" pRipple class="ml-1"></p-button>
+                        <p-button label="Comprar" (click)="confirm($event)" pRipple class="ml-1"></p-button>
                         <p-toast position="top-right"></p-toast>
                     </div>
             </div>
         </div>
     </section>
-    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
 

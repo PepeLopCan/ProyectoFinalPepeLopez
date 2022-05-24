@@ -47,7 +47,15 @@ deleteProducto(id: string): Observable<any> {
 createProduct(producto:Product):Observable<any>{
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('usuario') || '')
-    console.log(user);
+/* let formData = new FormData();
+formData.append('imagen',producto.imagen!)
+formData.append('nombre',producto.nombre!)
+formData.append('descripcion',producto.descripcion!)
+formData.append('precio',producto.precio!.toString() )
+formData.append('inventario',producto.inventario!)
+formData.append('categoria',producto.categoria!)
+formData.append('rating',producto.rating!.toString())
+ */
     const body = { 
         imagen:producto.imagen,
         nombre:producto.nombre, 
@@ -57,8 +65,8 @@ createProduct(producto:Product):Observable<any>{
         categoria:producto.categoria,
         rating:producto.rating
       }
-    console.log(body);
-    return this.http.post(`${base_url}/productos/create/`+ user.id, body, { headers: {
+      console.log(body)
+    return this.http.post(`${base_url}/productos/create/`+ user.id, body,{ headers: {
       authorization:`Bearer ${token}`
     }});
       }

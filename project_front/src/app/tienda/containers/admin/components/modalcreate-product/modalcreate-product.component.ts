@@ -12,10 +12,11 @@ import { ConfirmationService } from 'primeng/api';
   styleUrls: ['./modalcreate-product.component.scss']
 })
 export class ModalcreateProductComponent implements OnInit {
-cantidad:number=0;
+
 producto:Product[]=[];
 public archivos: any =[];
-imagenURL:any;
+imgName:any;
+
 inventario: Array<string> = ['OUTOFSTOCK', 'LOWSTOCK', 'INSTOCK'];
 categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
 
@@ -24,7 +25,6 @@ categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
     descripcion: new FormControl('', Validators.required),
     inventario: new FormControl('INSTOCK', Validators.required),
     categoria: new FormControl('LongBoards', Validators.required),
-    cantidad: new FormControl('', Validators.required),
     precio: new FormControl('', Validators.required),
     rating: new FormControl('', Validators.required),
     
@@ -39,9 +39,8 @@ categoria: Array<string> = ['LongBoards', 'BodyBoards', 'FishBoard'];
   }
 
 capturarFile(event:any) {
-    this.imagenURL = event.files;
-    console.log(this.imagenURL)
-    
+    this.imgName = event.currentFiles[0];
+    console.log(this.imgName)
   } 
  
   
@@ -56,13 +55,14 @@ capturarFile(event:any) {
   }
 
   crear(){
+ 
     const producto:Product ={
-      imagen:this.imagenURL,
+      url:this.imgName.name,
+      imagen:this.imgName,
       nombre: this.crearProducto.get('nombre')?.value,
       descripcion: this.crearProducto.get('descripcion')?.value,
       inventario: this.crearProducto.get('inventario')?.value,
       categoria: this.crearProducto.get('categoria')?.value,
-      cantidad: this.crearProducto.get('cantidad')?.value,
       precio: this.crearProducto.get('precio')?.value,
       rating: this.crearProducto.get('rating')?.value,
     }

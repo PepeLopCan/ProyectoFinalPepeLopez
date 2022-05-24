@@ -8,4 +8,5 @@ export class Product {
     categoria?:string;
     imagen?:string;
     rating?:number;
+    url?:string;
 }
