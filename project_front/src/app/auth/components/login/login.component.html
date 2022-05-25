@@ -10,9 +10,11 @@
         <form [formGroup]="loginForm">
         <label for="email1" class="block text-900 font-medium mb-2">Email</label>
         <input  formControlName="email" type="text" pInputText class="w-full mb-3">
+        <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')" class="text-danger">El email es obligatorio</small>
 
         <label for="password1" class="block text-900 font-medium mb-2">Password</label>
         <input formControlName="password"  type="password" pInputText class="w-full mb-3">
+        <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger">Contraseña Obligatoria</small>
 
         <div class="flex align-items-center justify-content-between mb-6">
             <div class="flex align-items-center">

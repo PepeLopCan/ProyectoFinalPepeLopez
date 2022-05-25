@@ -57,8 +57,8 @@ capturarFile(event:any) {
   crear(){
  
     const producto:Product ={
-      url:this.imgName.name,
-      imagen:this.imgName,
+  /*     url:this.imgName.name,
+      imagen:this.imgName, */
       nombre: this.crearProducto.get('nombre')?.value,
       descripcion: this.crearProducto.get('descripcion')?.value,
       inventario: this.crearProducto.get('inventario')?.value,
