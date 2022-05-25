@@ -56,6 +56,7 @@ export class ShopCartComponent implements OnInit {
     this.confirmationService.confirm({
       message: `¿Esta seguro de que quiere realizar la compra ?   Precio(${this.taxas})`,
       accept: () => {
+        localStorage.removeItem('producto');
         this.router.navigateByUrl('/tienda/shop');
       }
     });

@@ -110,7 +110,7 @@ export class AdminComponent implements OnInit {
   confirm(event: any, product:Product) {
     console.log(event);
     this.confirmationService.confirm({
-      message: `¿Estas seguro que deseas eliminar al usuario ${product.nombre}?`,
+      message: `¿Estas seguro que deseas eliminar el producto ${product.nombre}?`,
       accept: () => {
         this.deleteProducto(product.id)
         console.log(product.id);

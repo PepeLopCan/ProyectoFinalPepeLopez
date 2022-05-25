@@ -1,7 +1,7 @@
 <form [formGroup]="formEdit">
-    <div class="field">
+<!--     <div class="field">
         <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" [maxFileSize]="1000000" (onUpload)="capturarFile($event)"></p-fileUpload>
-    </div>         
+    </div> -->         
 <div class="field">
     <label for="name">Name</label>
     <input type="text"formControlName="nombre" pInputText id="name" [(ngModel)]="data.products.nombre" required autofocus />
