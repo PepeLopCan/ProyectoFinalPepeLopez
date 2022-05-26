@@ -103,7 +103,7 @@ const createProducto = async (req, res) => {
         precio:body.precio,
         inventario:body.inventario,
         categoria:body.categoria,
-        imagen:body.url,
+        //imagen:req.file.filename,
         rating:body.rating
       },
     );

@@ -2,7 +2,7 @@ import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../interfaces/product';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 const base_url = environment.base_url.toLowerCase();
@@ -11,9 +11,7 @@ const base_url = environment.base_url.toLowerCase();
 })
 
 export class ProductserviceService {
-  cartItems=[];
   producto:Product[]=[];
-
   constructor(private http: HttpClient) {
   
 
@@ -94,7 +92,7 @@ formData.append('rating',producto.rating!.toString())
   }
 
   
-  getTasks() {
+  getProductosCarrito() {
     if(localStorage.getItem('producto') === null) {
       this.producto = [];
     } else {
@@ -103,7 +101,7 @@ formData.append('rating',producto.rating!.toString())
     return this.producto;
   }
 
-  addTask(product: Product){
+  addProductosCarrito(product: Product){
     this.producto.push(product);
     let producto = [];
     if(localStorage.getItem('producto') === null) {
@@ -113,11 +111,12 @@ formData.append('rating',producto.rating!.toString())
     } else {
       producto = JSON.parse(localStorage.getItem('producto') || '');
       producto.push(product); 
+
       localStorage.setItem('producto', JSON.stringify(producto));
     }
   }
 
-  deleteTask(product: Product) {
+  deleteProductoCarrito(product: Product) {
     for (let i = 0; i < this.producto.length; i++) {
       if (product == this.producto[i]) {
         this.producto.splice(i, 1);
