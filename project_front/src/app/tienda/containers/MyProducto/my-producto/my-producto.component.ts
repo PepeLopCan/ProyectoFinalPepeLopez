@@ -36,7 +36,7 @@ export class MyProductoComponent implements OnInit {
     })
   }
   addCarrito(product:Product){
-    this.productService.addTask(product)
+    this.productService.addProductosCarrito(product)
     this.messageService.add({severity:'info', summary: 'Info', detail: 'Añadido al carrito'});
   }
 }
