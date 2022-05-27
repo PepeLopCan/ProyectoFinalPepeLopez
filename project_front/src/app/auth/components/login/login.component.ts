@@ -31,19 +31,19 @@ export class LoginComponent implements OnInit {
 
   login(){
     if ( this.loginForm.invalid){
-      return
-    }
-    this.authService.login(this.loginForm.value).subscribe((result: any) => {
+      this.router.navigate(['/login']);
+    }else{
+      this.authService.login(this.loginForm.value).subscribe((result: any) => {
   
-      localStorage.setItem('token', result.token);
-      localStorage.setItem('usuario', JSON.stringify(result.userEmail));
-      localStorage.setItem('producto',JSON.stringify(this.producto))
-      
-      console.log(result.productos);
-      this.router.navigateByUrl('/tienda/home');
-      console.log('Usuario logueado');
-      console.log(result);
-    })
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('usuario', JSON.stringify(result.userEmail));
+        localStorage.setItem('producto',JSON.stringify(this.producto))
+        this.router.navigate(['/tienda/home']);
+        console.log('Usuario logueado');
+   
+      })
+    }
+    
   }
 
 }

@@ -1,27 +1,38 @@
 const usuario = require("../models/usuario");
 const express = require("express");
-const { bcrypt } = require("bcrypt");
+const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const env = require("../helpers/auth");
 
-const login = async (req, res) => {
+const login = async (req, res = respone) => {
 
-    const { email,password} = req.body; 
-    const userEmail = await usuario.findOne({ where: { email }}).catch((err)=>{
+    const { email,password } = req.body; 
+    
+    const userEmail = await usuario.findOne({ where: {email:email}}).catch((err)=>{
       console.log("Error ", error);
     })
+    if (!userEmail) {
+      return res.status(404).json({
+        ok: false,
+        msg: "Email no valido",
+      });
+    }
 
-    if (!userEmail)
-    return res.json({message:"El email no existe"});
+       const Validapassword = bcrypt.compareSync(password, userEmail.password);
 
-    
+      if (!Validapassword) {
+        return res.status(404).json({
+          ok: false,
+          msg: "Contraseña no valida",
+        });
+      } 
   
     const jwtToken = jwt.sign(
       { id: userEmail.id, email: userEmail.email },
       env.secret
     );
-    res.json({ message: "Logueao!", token: jwtToken ,userEmail});
+    res.json({ message: "Logueao!", token: jwtToken ,userEmail}); 
 };
 
 const register = async (req, res) => {

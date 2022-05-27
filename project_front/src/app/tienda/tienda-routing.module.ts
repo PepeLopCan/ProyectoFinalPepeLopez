@@ -11,14 +11,15 @@ import { AdminComponent } from './containers/admin/admin/admin.component';
 import { ModalcreateProductComponent } from './containers/admin/components/modalcreate-product/modalcreate-product.component';
 import { ModalUpdateProductComponent } from './containers/admin/components/modal-update-product/modal-update-product.component';
 import { GuardGuard } from '../guard/guard.guard';
+import { AuthGuard } from '../guard/auth.guard';
 
 const routes: Routes = [
   
 
-      { path:'home',component:HomeComponent },
-      { path: 'myperfil',component: MiPerfilComponent},
-      { path: 'myproduct/:id',component: MyProductoComponent},
-      { path: 'shop',component: ShopComponent},
+      { path:'home',canActivate:[AuthGuard],component:HomeComponent },
+      { path: 'myperfil',canActivate:[AuthGuard], component: MiPerfilComponent},
+      { path: 'myproduct/:id',canActivate:[AuthGuard],component: MyProductoComponent},
+      { path: 'shop',canActivate:[AuthGuard],component: ShopComponent},
       { path: 'editUser/:id',component: ModalEditUsuarioComponent},
       { path: 'carrito',component: ShopCartComponent},
       { path: 'admin',canActivate:[GuardGuard],component: AdminComponent},
