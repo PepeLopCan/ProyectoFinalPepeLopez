@@ -2,14 +2,7 @@ const { response } = require("express");
 const pedido = require("../models/pedidos");
 const producto = require("../models/productos");
 
-/* const getPedido = async (req, res) => {
 
-    const result = await pedido.findOne({
-        where: { username: 'p4dm3' },
-        include: producto
-      });
-      console.log(result);
-} */
 
 const getPedido = async (req, res) => {
     try {

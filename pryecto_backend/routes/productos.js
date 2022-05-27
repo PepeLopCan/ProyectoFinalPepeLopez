@@ -3,7 +3,7 @@ var router = express.Router();
 const {token,ValiarAdmin_Role  }= require ('../middleware/validar-token');
 const producto = require("../models/productos");
 
-const { getAllProductos,getProducto,createProducto ,updateProducto,deleteProducto, uploadImage, upload} = require ('../controllers/productos'); 
+const { getAllProductos,getProducto,createProducto ,updateProducto,deleteProducto, upload} = require ('../controllers/productos'); 
 
 
 router.get('/todos',token,getAllProductos);

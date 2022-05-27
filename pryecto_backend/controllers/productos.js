@@ -89,42 +89,6 @@ const deleteProducto = async (req, res) => {
   }
 };
 
-
-
-
-/* const uploadImage = async (req, res) => {
-   multer({
-    destination: function (req, file, cb) {
-      cb(null, 'public/images/productos')
-    },
-    filename: function (req, file, cb) {
-      const mimeExtension = {
-        'image/jpeg': '.jpeg',
-        'image/jpg': '.jpg',
-        'image/png': '.png',
-        'image/gif': '.gif',
-      }
-      var extension = file.originalname.slice(file.originalname.lastIndexOf('.') + mimeExtension);
-      cb(null,Date.now() + extension);
-    }
-  }).single('imagen');
-  const file = req.file;
-  const id = req.params.id;
-  console.log(file) 
-  if (file) {
-    await producto.update({ imagen: file.filename }, {
-      where: {
-        id: id
-      }
-    })
-    res.json('Imagen subida con exito')
-  } else {
-    throw new Error('Archivo no subido')
-  }
-
-}; */
-
- 
 const createProducto = async (req, res) => {
   try {
     const body = req.body;
@@ -168,33 +132,6 @@ const createProducto = async (req, res) => {
     cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
   }
 })
-
-/* const uploadAvatar = multer({
-  storage: storage,
-  fileFilter: (req, file, cb) => {
-
-    if (file.mimetype === 'image/jpeg' ||
-      file.mimetype === 'image/jpg' ||
-      file.mimetype === 'image/png' ||
-      file.mimetype === 'image/gif') {
-      cb(null, true);
-    } else {
-      cb(null, false);
-      req.fileError = 'File format is not valid';
-    }
-  }
-})   */
-
-/* 
-var aa = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/images/productos')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-})
- */
 
  
 var upload = multer({ storage: storage })
