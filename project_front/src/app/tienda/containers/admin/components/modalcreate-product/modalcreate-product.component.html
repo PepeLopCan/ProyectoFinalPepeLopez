@@ -1,10 +1,9 @@
 <form [formGroup]="crearProducto">
-<!--  <div class="field">
-        
-     <input type="file"
-    id="avatar" name="avatar" (onSelect)="capturarFile($event)"> 
+     <div class="field">
+   <!--   <input type="file"
+    id="avatar" name="avatar" (onSelect)="capturarFile($event)">  -->
     <p-fileUpload #fubauto mode="basic" name="demo[]"  accept="image/*" (onSelect)="capturarFile($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
-    </div>    -->
+    </div>  
 <div class="field">
     <label for="name">Name</label>
     <input type="text"formControlName="nombre" pInputText id="name" required autofocus />

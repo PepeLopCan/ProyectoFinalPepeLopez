@@ -89,12 +89,11 @@ const deleteProducto = async (req, res) => {
   }
 };
 
+
+
+
 const uploadImage = async (req, res) => {
-
-  const file = req.file;
-  const id = req.params.id;
-
-  multer({
+   multer({
     destination: function (req, file, cb) {
       cb(null, 'public/images/productos')
     },
@@ -105,12 +104,14 @@ const uploadImage = async (req, res) => {
         'image/png': '.png',
         'image/gif': '.gif',
       }
-      cb(null, file.originalname);
+      var extension = file.originalname.slice(file.originalname.lastIndexOf('.') + mimeExtension);
+      cb(null,Date.now() + extension);
     }
   }).single('imagen');
-
+  const file = req.file;
+  const id = req.params.id;
+  console.log(file) 
   if (file) {
-    console.log(file)
     await producto.update({ imagen: file.filename }, {
       where: {
         id: id
@@ -123,6 +124,7 @@ const uploadImage = async (req, res) => {
 
 };
 
+ 
 const createProducto = async (req, res) => {
   try {
     const body = req.body;
@@ -134,9 +136,8 @@ const createProducto = async (req, res) => {
         precio: body.precio,
         inventario: body.inventario,
         categoria: body.categoria,
-        imagen: '',
+        imagen:'',
         rating: body.rating,
-        createdAt: new Date().toISOString()
       },
     );
     res.json({
@@ -153,9 +154,7 @@ const createProducto = async (req, res) => {
 };
 
 
-
-
-const storage = multer.diskStorage({
+ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/images/productos')
   },
@@ -169,7 +168,8 @@ const storage = multer.diskStorage({
     cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
   }
 })
-const uploadAvatar = multer({
+
+/* const uploadAvatar = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
 
@@ -183,7 +183,21 @@ const uploadAvatar = multer({
       req.fileError = 'File format is not valid';
     }
   }
+})   */
+
+/* 
+var aa = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images/productos')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
 })
+ */
+
+ 
+var upload = multer({ storage: storage })
 
 module.exports = {
   getAllProductos,
@@ -191,6 +205,6 @@ module.exports = {
   updateProducto,
   deleteProducto,
   createProducto,
-  uploadAvatar,
-  uploadImage
+  uploadImage,
+  upload
 };
