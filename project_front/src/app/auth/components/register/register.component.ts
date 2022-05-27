@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit {
 
   capturarFile(event: any) {
     this.imgName = event.currentFiles[0];
-    console.log(this.imgName)
   }
   
    crearUser(){
