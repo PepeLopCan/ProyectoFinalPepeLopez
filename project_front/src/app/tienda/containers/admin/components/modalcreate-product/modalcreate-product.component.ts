@@ -9,10 +9,9 @@ import { ConfirmationService } from 'primeng/api';
 @Component({
   selector: 'app-modalcreate-product',
   templateUrl: './modalcreate-product.component.html',
-  styleUrls: ['./modalcreate-product.component.scss']
+  styleUrls: ['./modalcreate-product.component.scss'],
 })
 export class ModalcreateProductComponent implements OnInit {
-
   producto: Product[] = [];
   public archivos: any = [];
   imgName: any;
@@ -27,28 +26,31 @@ export class ModalcreateProductComponent implements OnInit {
     categoria: new FormControl('LongBoards', Validators.required),
     precio: new FormControl('', Validators.required),
     rating: new FormControl('', Validators.required),
-  })
+  });
 
-  constructor(private productService: ProductserviceService, private router: Router,
-    private aRouter: ActivatedRoute, public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig, private confirmationService: ConfirmationService,) { }
+  constructor(
+    private productService: ProductserviceService,
+    private router: Router,
+    private aRouter: ActivatedRoute,
+    public ref: DynamicDialogRef,
+    public config: DynamicDialogConfig,
+    private confirmationService: ConfirmationService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   capturarFile(event: any) {
     this.imgName = event.currentFiles[0];
-    console.log(this.imgName)
+    console.log(this.imgName);
   }
-
 
   confirm(event: any) {
     console.log(event);
     this.confirmationService.confirm({
       message: `¿Estas seguro que deseas crear el producto?`,
       accept: () => {
-        this.crear()
-      }
+        this.crear();
+      },
     });
   }
 
@@ -63,13 +65,15 @@ export class ModalcreateProductComponent implements OnInit {
       categoria: this.crearProducto.get('categoria')?.value,
       precio: this.crearProducto.get('precio')?.value,
       rating: this.crearProducto.get('rating')?.value,
-    }
+    };
 
     this.productService.createProduct(producto).subscribe((resp) => {
       console.log(resp);
-      this.productService.uploadImg(formData, resp.nuevoProducto.id).subscribe(() => {
-        this.ref.close(true);
-      })
-    })
+      this.productService
+        .uploadImg(formData, resp.nuevoProducto.id)
+        .subscribe(() => {
+          this.ref.close(true);
+        });
+    });
   }
 }

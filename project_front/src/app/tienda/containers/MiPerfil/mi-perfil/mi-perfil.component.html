@@ -4,34 +4,28 @@
             <div class="pic">
                 <img [src]="'http://localhost:3000/public/images/usuarios/'+ user.imagen" height="50" class="mb-3">
             </div>
-            <p-fileUpload mode="basic" chooseLabel="Cambiar imagen" name="demo[]" url="./upload.php" class="w-4" accept="image/*" (onUpload)="onBasicUpload($event)" [auto]="true"></p-fileUpload>
+            <p-fileUpload mode="basic" chooseLabel="Cambiar imagen" name="demo[]" url="./upload.php" class="w-4"
+                accept="image/*" (onUpload)="onBasicUpload($event)" [auto]="true"></p-fileUpload>
         </div>
         <div>
 
             <label for="nombre" class="block text-900 font-medium mb-2">Nombre</label>
-           <div class="input">{{user.nombre}}</div>
+            <div class="input">{{user.nombre}}</div>
 
             <label for="email1" class="block text-900 font-medium mb-2">Email</label>
             <div class="input">{{user.email}}</div>
-    
-    <div class="row justify-content-center">
-        <button pButton pRipple label="Actualizar" (click)="show(user)" icon="pi pi-pencil" class="col-6 w-4 m-3"style="background-color:rgb(24, 173, 210); border: 1px solid rgb(24, 173, 210);"></button>
-        <button pButton pRipple type="button" icon="pi pi-times" label="Borrar" class="col-6 w-4 m-3 p-button-danger" (click)="confirm($event,user)"></button>
-    </div>
+
+            <div class="row justify-content-center">
+                <button pButton pRipple label="Actualizar" (click)="show(user)" icon="pi pi-pencil"
+                    class="col-6 w-4 m-3"
+                    style="background-color:rgb(24, 173, 210); border: 1px solid rgb(24, 173, 210);"></button>
+                <button pButton pRipple type="button" icon="pi pi-times" label="Borrar"
+                    class="col-6 w-4 m-3 p-button-danger" (click)="confirm($event,user)"></button>
+            </div>
 
         </div>
-        </div>
-        </section>
-        <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle" acceptLabel="Si"
-acceptButtonStyleClass="p-button-sm acceptButton" rejectButtonStyleClass="p-button-sm p-button-secondary">
+    </div>
+</section>
+<p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle" acceptLabel="Si"
+    acceptButtonStyleClass="p-button-sm acceptButton" rejectButtonStyleClass="p-button-sm p-button-secondary">
 </p-confirmDialog>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

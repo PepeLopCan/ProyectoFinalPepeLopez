@@ -1,92 +1,87 @@
-#cart-container{
-    overflow-x: auto;
-    margin-top:100px
+#cart-container {
+  overflow-x: auto;
+  margin-top: 100px;
 }
-#cart-container table{
-    border-collapse: collapse;
-    width:100%;
-    table-layout: fixed;
-    white-space: nowrap;
+#cart-container table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  white-space: nowrap;
 }
-#cart-container table thead{
-    font-weight: 700;
+#cart-container table thead {
+  font-weight: 700;
+}
+#cart-container table thead td {
+  background: rgb(0, 153, 255);
+  color: white;
+  border: none;
+  padding: 6px 0;
+}
+#cart-container table td {
+  border-radius: 1px solid rgb(170, 170, 170);
+  text-align: center;
+}
 
-}
-#cart-container table thead td{
-    background:rgb(0, 153, 255);
-    color: white; 
-    border:none; 
-    padding: 6px 0;
-}
-#cart-container table  td{
-    border-radius:  1px solid rgb(170, 170, 170);
-    text-align: center;
-}
-
-#cart-container table td:nth-child(1){
-    width: 100px;
+#cart-container table td:nth-child(1) {
+  width: 100px;
 }
 
 #cart-container table td:nth-child(2),
-#cart-container table td:nth-child(3){
-    width: 200px;
+#cart-container table td:nth-child(3) {
+  width: 200px;
 }
 
 #cart-container table td:nth-child(4),
 #cart-container table td:nth-child(5),
-#cart-container table td:nth-child(6){
-    width: 170px;
+#cart-container table td:nth-child(6) {
+  width: 170px;
 }
 #cart-container table tbody img {
-    width: 120px;
-    height:120px;
-
+  width: 120px;
+  height: 120px;
 }
-:host::ng-deep .p-inputtext{
-    width:45px
+:host::ng-deep .p-inputtext {
+  width: 45px;
 }
-#cart-bottom .cupon>div,
-#cart-bottom .total>div{
-    border: 1px solid rgb(170, 170, 170);
+#cart-bottom .cupon > div,
+#cart-bottom .total > div {
+  border: 1px solid rgb(170, 170, 170);
 }
-
 
 #cart-bottom .cupon h5,
-#cart-bottom .total h5{
-    background:rgb(0, 153, 255);
-    color: #fff;
-    border : none; 
-    padding: 6px 12px;
-    font-weight: 700;
+#cart-bottom .total h5 {
+  background: rgb(0, 153, 255);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-weight: 700;
 }
- .container{
-    margin-bottom: 150px;
-}
-
-#cart-bottom .cupon p{
-    padding: 0 12px
+.container {
+  margin-bottom: 150px;
 }
 
-:host::ng-deep #cart-bottom .p-inputtext{
-    width:300px;
-    height:40px;
-    margin: 0 0 20px 12px; 
-    padding: 0 12px
+#cart-bottom .cupon p {
+  padding: 0 12px;
 }
-:host::ng-deep#cart-bottom .p-button{
-    margin: 0 0 20px 12px; 
-   
+
+:host::ng-deep #cart-bottom .p-inputtext {
+  width: 300px;
+  height: 40px;
+  margin: 0 0 20px 12px;
+  padding: 0 12px;
 }
- #cart-bottom .total div>div{
-     padding: 0 12px; 
- }
- #cart-bottom .total h6{
-     color: black 
- }
+:host::ng-deep#cart-bottom .p-button {
+  margin: 0 0 20px 12px;
+}
+#cart-bottom .total div > div {
+  padding: 0 12px;
+}
+#cart-bottom .total h6 {
+  color: black;
+}
 
- .second-hr{
-     background:rgb(99, 99, 99);
-     width:100%;
-     height: 1px;
- }
-
+.second-hr {
+  background: rgb(99, 99, 99);
+  width: 100%;
+  height: 1px;
+}

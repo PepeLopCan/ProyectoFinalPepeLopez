@@ -1,139 +1,126 @@
-.r{
-    position:relative;
-      min-height:100%; 
+.r {
+  position: relative;
+  min-height: 100%;
 }
 .carousel-caption {
-    position: absolute;
-    top: 54%;
-    transform: translateY(-50%);
-    text-transform: uppercase;
-  }
-  .carousel-caption h1 {
-    font-size: 60.8px;
-    text-shadow: 1.6px 1.6px 4.8px rgba(0, 0, 0, 0.1);
-  }
-  .border-primary {
-    border-top: 3.2px solid #cecb23 !important;
-  }
-
-  .card{
-      position: relative;
-      overflow:hidden;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-  }
-
-  .card img {
-     transition: all .4s ease-in-out;
-     width:100%;
-     height:400px;
-     object-fit: cover;
-  }
-  .card h1 {
-      position:absolute;
-      margin-top:310px;
-      margin-left: 80px;
-
-  }
-  .card p {
-    position:absolute;
-    margin-top:350px;
-    margin-left:105px;
-
+  position: absolute;
+  top: 54%;
+  transform: translateY(-50%);
+  text-transform: uppercase;
+}
+.carousel-caption h1 {
+  font-size: 60.8px;
+  text-shadow: 1.6px 1.6px 4.8px rgba(0, 0, 0, 0.1);
+}
+.border-primary {
+  border-top: 3.2px solid #cecb23 !important;
 }
 
-  .card img:hover{
-	transform: scale(1.1);
-  }
+.card {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.card img {
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.card h1 {
+  position: absolute;
+  margin-top: 310px;
+  margin-left: 80px;
+}
+.card p {
+  position: absolute;
+  margin-top: 350px;
+  margin-left: 105px;
+}
+
+.card img:hover {
+  transform: scale(1.1);
+}
 
 .jumbotron {
-    background-image: url("../../../../assets/images/imagenes/9.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height:450px;
+  background-image: url("../../../../assets/images/imagenes/9.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 450px;
 }
-.jumbotron .display-4{
-    font-weight: 400;
+.jumbotron .display-4 {
+  font-weight: 400;
 }
-.jumbotron .lead{
-    font-weight: 400;
+.jumbotron .lead {
+  font-weight: 400;
 }
 
 :host ::ng-deep .jumbotron .p-button {
-    background:rgb(255, 255, 255);
-    color:rgb(0, 0, 0);
-    border: 1px solid rgb(255, 255, 255); 
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(255, 255, 255);
 }
 
-
-.containerBack{
-
-    width:100%;
-    height:400px
+.containerBack {
+  width: 100%;
+  height: 400px;
 }
 
-.lista{
-    text-align: center;
-    flex-wrap: wrap;
-    display:flex;
-    justify-content:center;
-    padding:15px
-
+.lista {
+  text-align: center;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
 }
 
-.lista li{
-    border-radius: 40%;
-    background: #eeeeee;
-    width: 75px;
-    height: 75px;
-    line-height: 72px;
-    list-style:none;
-    margin-left: 90px;
-    margin-right: 90px;
-  
+.lista li {
+  border-radius: 40%;
+  background: #eeeeee;
+  width: 75px;
+  height: 75px;
+  line-height: 72px;
+  list-style: none;
+  margin-left: 90px;
+  margin-right: 90px;
 }
-.lista li i{
-    font-size: 27px;
-}
-
-.text{
-   margin-top: 3px;
-   line-height: 20px;
-   font-weight: 600;
-}
-:host::ng-deep .p-button{
-    background-color: rgb(24, 173, 210);
-    border: 1px solid rgb(24, 173, 210);
-}
-:host::ng-deep .p-button:hover{
-    background-color: rgb(24, 160, 210);
-    border: 1px solid rgb(24, 160, 210);
+.lista li i {
+  font-size: 27px;
 }
 
+.text {
+  margin-top: 3px;
+  line-height: 20px;
+  font-weight: 600;
+}
+:host::ng-deep .p-button {
+  background-color: rgb(24, 173, 210);
+  border: 1px solid rgb(24, 173, 210);
+}
+:host::ng-deep .p-button:hover {
+  background-color: rgb(24, 160, 210);
+  border: 1px solid rgb(24, 160, 210);
+}
 
 @media screen and (max-width: 576px) {
-    
-    .card h1 {
-        position:absolute;
-        font-size: 20px;
-        margin-top:310px;
-        margin-left: 20px;
-  
-    }
-    .card p {
-        visibility: hidden;
-  
+  .card h1 {
+    position: absolute;
+    font-size: 20px;
+    margin-top: 310px;
+    margin-left: 20px;
   }
-    
-    .lista li{
-        margin: 10px 0px 10px 0px;  
-    }
-    .text{
-        visibility: hidden;
-    }
+  .card p {
+    visibility: hidden;
+  }
+
+  .lista li {
+    margin: 10px 0px 10px 0px;
+  }
+  .text {
+    visibility: hidden;
+  }
 }
-
-
-

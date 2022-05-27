@@ -1,34 +1,40 @@
 <form [formGroup]="formEdit">
-<!--     <div class="field">
+    <!--     <div class="field">
         <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" [maxFileSize]="1000000" (onUpload)="capturarFile($event)"></p-fileUpload>
-    </div> -->         
-<div class="field">
-    <label for="name">Name</label>
-    <input type="text"formControlName="nombre" pInputText id="name" [(ngModel)]="data.products.nombre" required autofocus />
-</div>
-<div class="field">
-    <label for="descripcion">Description</label>
-    <textarea id="descripcion" formControlName="descripcion" pInputTextarea required rows="3" [(ngModel)]="data.products.descripcion" cols="20"></textarea>
-</div>
-<div class="field">
-    <label for="Inventario">Inventario</label>
-    <p-dropdown  inputId="Inventario" [options]="inventario"  [(ngModel)]="data.products.inventario" formControlName="inventario"></p-dropdown>
-</div>
-<div class="formgrid grid">
-    <div class="field col">
-        <label for="price">Precio</label>
-        <p-inputNumber id="price" mode="currency" formControlName="precio" [(ngModel)]="data.products.precio" currency="EUR" locale="de-DE"></p-inputNumber>
+    </div> -->
+    <div class="field">
+        <label for="name">Name</label>
+        <input type="text" formControlName="nombre" pInputText id="name" [(ngModel)]="data.products.nombre" required
+            autofocus />
     </div>
     <div class="field">
-        <label for="categoria">Categoria</label>
-        <p-dropdown  inputId="categoria" [options]="categoria"   [(ngModel)]="data.products.categoria" formControlName="categoria" placeholder="categoria"></p-dropdown>
+        <label for="descripcion">Description</label>
+        <textarea id="descripcion" formControlName="descripcion" pInputTextarea required rows="3"
+            [(ngModel)]="data.products.descripcion" cols="20"></textarea>
     </div>
-    <div class="field col">
-        <label for="quantity">Rating</label>
-        <p-rating formControlName="rating"  [(ngModel)]="data.products.rating"></p-rating>
+    <div class="field">
+        <label for="Inventario">Inventario</label>
+        <p-dropdown inputId="Inventario" [options]="inventario" [(ngModel)]="data.products.inventario"
+            formControlName="inventario"></p-dropdown>
     </div>
-</div>
-<div class="formgrid grid flex justify-content-center mt-3">
-        <p-button label="Actualizar"  icon="pi pi-check" class="p-button-text" (click)="editar(data.products.id)"></p-button>
-</div>
+    <div class="formgrid grid">
+        <div class="field col">
+            <label for="price">Precio</label>
+            <p-inputNumber id="price" mode="currency" formControlName="precio" [(ngModel)]="data.products.precio"
+                currency="EUR" locale="de-DE"></p-inputNumber>
+        </div>
+        <div class="field">
+            <label for="categoria">Categoria</label>
+            <p-dropdown inputId="categoria" [options]="categoria" [(ngModel)]="data.products.categoria"
+                formControlName="categoria" placeholder="categoria"></p-dropdown>
+        </div>
+        <div class="field col">
+            <label for="quantity">Rating</label>
+            <p-rating formControlName="rating" [(ngModel)]="data.products.rating"></p-rating>
+        </div>
+    </div>
+    <div class="formgrid grid flex justify-content-center mt-3">
+        <p-button label="Actualizar" icon="pi pi-check" class="p-button-text" (click)="editar(data.products.id)">
+        </p-button>
+    </div>
 </form>

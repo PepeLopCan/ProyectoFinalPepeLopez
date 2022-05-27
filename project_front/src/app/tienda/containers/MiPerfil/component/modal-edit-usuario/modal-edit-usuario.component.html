@@ -1,33 +1,37 @@
-
 <main>
     <div class="header">
     </div>
     <form [formGroup]="formEdit" class="justify-content-center">
         <div class="row justify-content-center">
             <div class="inputgroup">
-                <input type="text" class="m-2" size="20" pInputText formControlName="nombre" [(ngModel)]="data.user.nombre"> 
+                <input type="text" class="m-2" size="20" pInputText formControlName="nombre"
+                    [(ngModel)]="data.user.nombre">
                 <label for="float-input">Nombre</label>
                 <i class="pi pi-lock"></i>
             </div>
-            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="inputgroup">
-                <input type="text"  class="m-2" size="20" pInputText formControlName="email" [(ngModel)]="data.user.email"> 
+                <input type="text" class="m-2" size="20" pInputText formControlName="email"
+                    [(ngModel)]="data.user.email">
                 <label for="float-input">Email</label>
                 <i class="pi pi-lock"></i>
             </div>
-        </div>  
+        </div>
         <div class="row justify-content-center">
             <div class="inputgroup">
-                <input type="text" class="m-2" size="20" pInputText formControlName="password"[(ngModel)]="data.user.password"> 
+                <input type="text" class="m-2" size="20" pInputText formControlName="password"
+                    [(ngModel)]="data.user.password">
                 <label for="float-input">Password</label>
                 <i class="pi pi-lock"></i>
             </div>
-        </div>  
+        </div>
     </form>
     <div class="btn-action">
         <div class="row justify-content-center mt-4">
-            <button pButton pRipple (click)="editar(data.user.id)" label="Actualizar" icon="pi pi-pencil" class=" col-6 " style="background-color:rgb(24, 173, 210); border: 1px solid rgb(24, 173, 210);"></button>
+            <button pButton pRipple (click)="editar(data.user.id)" label="Actualizar" icon="pi pi-pencil"
+                class=" col-6 "
+                style="background-color:rgb(24, 173, 210); border: 1px solid rgb(24, 173, 210);"></button>
             <p-toast position="top-right"></p-toast>
         </div>
     </div>

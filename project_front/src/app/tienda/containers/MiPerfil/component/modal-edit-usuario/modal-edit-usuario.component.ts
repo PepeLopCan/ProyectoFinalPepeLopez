@@ -9,43 +9,39 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
   selector: 'app-modal-edit-usuario',
   templateUrl: './modal-edit-usuario.component.html',
   styleUrls: ['./modal-edit-usuario.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class ModalEditUsuarioComponent implements OnInit {
-
-  usuario:Usuario[]=[];
-  id:any
+  usuario: Usuario[] = [];
+  id: any;
   formEdit: any;
-  data:any;
+  data: any;
 
-
-  constructor( 
-    private router:Router,
+  constructor(
+    private router: Router,
     private primengConfig: PrimeNGConfig,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
-    private userService:UsuariosService,
-    private messageService: MessageService) {
-      
-      this.data = this.config.data
-      this.formEdit = new FormGroup({
-        nombre: new FormControl(this.data?.user?.nombre, Validators.required),
-        email: new FormControl(this.data?.user?.email, Validators.required),
-        password: new FormControl(this.data?.user?.password, Validators.required)
-     })
-     console.log(this.data);
-     console.log(this.formEdit); 
-     
-     }
-
-  ngOnInit(): void {
+    private userService: UsuariosService,
+    private messageService: MessageService
+  ) {
+    this.data = this.config.data;
+    this.formEdit = new FormGroup({
+      nombre: new FormControl(this.data?.user?.nombre, Validators.required),
+      email: new FormControl(this.data?.user?.email, Validators.required),
+      password: new FormControl(this.data?.user?.password, Validators.required),
+    });
+    console.log(this.data);
+    console.log(this.formEdit);
   }
 
-   editar(id:string){
-    this.userService.updateUser(id, this.formEdit.value).subscribe((resp:any)=>{
-      this.ref.close(true);
-    })
+  ngOnInit(): void {}
 
-}
-
+  editar(id: string) {
+    this.userService
+      .updateUser(id, this.formEdit.value)
+      .subscribe((resp: any) => {
+        this.ref.close(true);
+      });
+  }
 }

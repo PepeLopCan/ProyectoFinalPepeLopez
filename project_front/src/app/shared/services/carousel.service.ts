@@ -4,16 +4,18 @@ import { Router } from '@angular/router';
 
 import { Carousel } from '../modales/carousel';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarouselService {
+  constructor(private http: HttpClient, private router: Router) {}
 
-  constructor(private http:HttpClient, private router:Router) {}
-
-   getCarousel(){
-    return this.http.get<any>("../../../../assets/archivosConfig/carousel.json")
+  getCarousel() {
+    return this.http
+      .get<any>('../../../../assets/archivosConfig/carousel.json')
       .toPromise()
-      .then(res => <Carousel[]>res.data)
-      .then(data => { return data})
+      .then((res) => <Carousel[]>res.data)
+      .then((data) => {
+        return data;
+      });
   }
 }

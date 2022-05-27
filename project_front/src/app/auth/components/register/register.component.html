@@ -4,30 +4,34 @@
             <img src="../../../../assets/logo/logo2.png" alt="Image" height="85" class="mb-3">
             <div class="text-900 text-3xl font-medium mb-3">Bienvenido</div>
             <span class="text-600 font-medium line-height-3">Ya tienes cuenta?</span>
-            <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" [routerLink]="['/login']">Accede aquí!</a>
+            <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" [routerLink]="['/login']">Accede
+                aquí!</a>
         </div>
         <div>
             <form [formGroup]="registerForm">
 
-            <label for="nombre" class="block text-900 font-medium mb-2">Nombre</label>
-            <input id="nombre" formControlName="nombre" type="text" pInputText class="w-full mb-3">
-            <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')" class="text-danger">Nombre Obligatorio</small>
+                <label for="nombre" class="block text-900 font-medium mb-2">Nombre</label>
+                <input id="nombre" formControlName="nombre" type="text" pInputText class="w-full mb-3">
+                <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')"
+                    class="text-danger">Nombre Obligatorio</small>
 
-            <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-            <input id="email1"formControlName="email"  type="text" pInputText class="w-full mb-3">
-            <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')" class="text-danger">Email Obligatorio</small>
-    
-            <label for="password1" class="block text-900 font-medium mb-2">Password</label>
-            <input id="password1"formControlName="password"  type="password" pInputText class="w-full mb-3">
-            <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')" class="text-danger">Contraseña Obligatoria</small>
-            <div class="flex align-items-center justify-content-between mb-6">
-                <div class="flex align-items-center">
-                    <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                    <label for="rememberme1" class="text-900">Remember me</label>
+                <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+                <input id="email1" formControlName="email" type="text" pInputText class="w-full mb-3">
+                <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')"
+                    class="text-danger">Email Obligatorio</small>
+
+                <label for="password1" class="block text-900 font-medium mb-2">Password</label>
+                <input id="password1" formControlName="password" type="password" pInputText class="w-full mb-3">
+                <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')"
+                    class="text-danger">Contraseña Obligatoria</small>
+                <div class="flex align-items-center justify-content-between mb-6">
+                    <div class="flex align-items-center">
+                        <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                        <label for="rememberme1" class="text-900">Remember me</label>
+                    </div>
                 </div>
-            </div>
-            <button pButton pRipple label="Sing Up" icon="pi pi-user" (click)="crearUser()" class="w-full"></button>
-        </form>
+                <button pButton pRipple label="Sing Up" icon="pi pi-user" (click)="crearUser()" class="w-full"></button>
+            </form>
         </div>
-        </div>
-        </section>
+    </div>
+</section>
