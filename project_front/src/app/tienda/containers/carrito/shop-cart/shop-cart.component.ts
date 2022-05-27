@@ -30,13 +30,13 @@ export class ShopCartComponent implements OnInit {
   ngOnInit(): void {
     this.primengConfig.ripple = true;
 
-    this.productos = this.productService.getTasks();
+    this.productos = this.productService.getProductosCarrito();
     console.log(this.productos);
     
   }
 
   deleteCarrito(productos:Product){
-     this.productService.deleteTask(productos);
+     this.productService.deleteProductoCarrito(productos);
    }
 
    operacion(){
@@ -56,6 +56,7 @@ export class ShopCartComponent implements OnInit {
     this.confirmationService.confirm({
       message: `¿Esta seguro de que quiere realizar la compra ?   Precio(${this.taxas})`,
       accept: () => {
+        localStorage.setItem('producto',JSON.stringify([]))
         this.router.navigateByUrl('/tienda/shop');
       }
     });

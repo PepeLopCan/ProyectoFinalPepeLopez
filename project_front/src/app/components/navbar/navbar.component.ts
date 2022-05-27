@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Usuario } from 'src/app/shared/modales/usuario-modal';
 import { Observable } from 'rxjs';
+import { ProductserviceService } from 'src/app/shared/services/productos/productservice.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,8 +17,8 @@ export class NavbarComponent implements OnInit {
   usuarios:Usuario[]=[];
   isLoggedIn$?: Observable<boolean>;  
   user = JSON.parse(localStorage.getItem('usuario') || '') 
-  productCarrito = JSON.parse(localStorage.getItem('producto') || '')
-  constructor(private router:Router, public authService:AuthService) {
+  productCarrito=  JSON.parse(localStorage.getItem('producto') || '') 
+  constructor(private router:Router, public authService:AuthService, private productoService:ProductserviceService) {
 
     
 
@@ -64,8 +65,10 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
+    
   }
+
+
 
   logout(){
     this.authService.logout()

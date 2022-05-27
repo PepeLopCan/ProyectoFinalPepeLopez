@@ -16,7 +16,9 @@ section{
     background-color: rgb(24, 160, 210);
     border: 1px solid rgb(24, 160, 210);
 }
-
+.text-danger{
+    color: red;
+}
 
 
 

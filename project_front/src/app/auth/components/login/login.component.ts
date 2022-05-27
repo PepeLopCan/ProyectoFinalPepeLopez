@@ -17,14 +17,17 @@ export class LoginComponent implements OnInit {
   usario:Usuario[]=[];
   producto:Product[]=[]
   isLoggedin: boolean = false;
+  public loginForm!:FormGroup;
 
-  public loginForm = new FormGroup({
-    email:new FormControl('',Validators.required),
-    password:new FormControl('',Validators.required),
-  });
+ 
   constructor(private authService:AuthService, private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email:new FormControl('',Validators.required),
+      password:new FormControl('',Validators.required),
+    });
+  }
 
   login(){
     if ( this.loginForm.invalid){
@@ -34,7 +37,9 @@ export class LoginComponent implements OnInit {
   
       localStorage.setItem('token', result.token);
       localStorage.setItem('usuario', JSON.stringify(result.userEmail));
-      console.log(result.userEmail);
+      localStorage.setItem('producto',JSON.stringify(this.producto))
+      
+      console.log(result.productos);
       this.router.navigateByUrl('/tienda/home');
       console.log('Usuario logueado');
       console.log(result);

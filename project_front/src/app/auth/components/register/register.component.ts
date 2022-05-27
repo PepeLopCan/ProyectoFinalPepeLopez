@@ -12,16 +12,19 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class RegisterComponent implements OnInit {
 
   usario:Usuario[]=[];
+  public registerForm!:FormGroup
 
- public registerForm = new FormGroup({
-    nombre:new FormControl('',Validators.required),
-    email:new FormControl('',Validators.required),
-    password:new FormControl('',Validators.required),
-  }); 
+
 
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
+
+     this.registerForm = new FormGroup({
+      nombre:new FormControl('',Validators.required),
+      email:new FormControl('',Validators.required),
+      password:new FormControl('',Validators.required),
+    }); 
   }
 
    crearUser(){

@@ -38,8 +38,8 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
     this.getProductos();
     this.sortOptions = [
-        {label: 'Price High to Low', value: '!precio'},
-        {label: 'Price Low to High', value: 'precio'},
+        {label: 'Precio Alto a Barato', value: '!precio'},
+        {label: 'Precio Barato a Alto', value: 'precio'},
         {label: 'Categoria', value: 'categoria'},
         {label: 'Stock', value: 'inventario'},
         {label: 'Stock bajo', value: '!inventario'},
@@ -70,7 +70,7 @@ getProductos() {
 }
 
 addCarrito(product:Product){
-  this.productService.addTask(product)
+  this.productService.addProductosCarrito(product)
   this.messageService.add({severity:'info', summary: 'Info', detail: 'Añadido al carrito'});
 }
 
