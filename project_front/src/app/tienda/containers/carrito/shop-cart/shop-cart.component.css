@@ -39,7 +39,7 @@
 }
 #cart-container table tbody img {
     width: 120px;
-    height:120px;
+    height:170px;
 
 }
 :host::ng-deep .p-inputtext{
@@ -89,4 +89,6 @@
      width:100%;
      height: 1px;
  }
-
+.texto h5 {
+    font-size: 0.91rem;
+}

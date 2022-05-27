@@ -10,7 +10,7 @@
                     <td>Total</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="texto">
                 <tr *ngFor="let product of productos;">
                     <td><button (click)="deleteCarrito(product)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button></td>
                     <td><img [src]="'http://localhost:3000/public/images/productos/'+ product.imagen" alt=""></td>
@@ -19,7 +19,7 @@
                     </td>
                     <td><h5>{{product.precio | currency:'EUR'}}</h5></td>
                     <td><p-inputNumber type="number" [(ngModel)]="product.cantidad" [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
-                        decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"  [min]="0" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                        decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"  [min]="1" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
                         </p-inputNumber></td>
                     <td><h5>{{product.cantidad! * product.precio! | currency:'EUR' }}</h5></td>
             </tbody>
