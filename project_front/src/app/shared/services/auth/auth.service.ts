@@ -38,7 +38,19 @@ export class AuthService {
     this.router.navigateByUrl('/login');
   }
 
-  crearUsuario(formData: Register) {
-    return this.http.post(`${base_url}/usuarios/create`, formData)
+  crearUsuario(usuario:Usuario): Observable<any> {
+    const body = {
+      imagen:usuario.imagen,
+      nombre:usuario.nombre,
+      email:usuario.email,
+      password:usuario.password,
+
+    }
+    return this.http.post(`${base_url}/usuarios/create`, body)
+  }
+
+  uploadImg(file: any, id: number){
+    console.log(id);
+    return this.http.post(`${base_url}/usuarios/uploadUser/${id}`, file)
   }
 }
