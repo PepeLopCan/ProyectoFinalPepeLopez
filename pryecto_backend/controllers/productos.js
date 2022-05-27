@@ -1,20 +1,20 @@
 const { response } = require("express");
-const producto  = require("../models/productos");
-const multer = require('multer'); 
+const producto = require("../models/productos");
+const multer = require('multer');
 
 const getAllProductos = async (req, res) => {
-     try {
+  try {
     const AllProducts = await producto.findAll()
     res.json({
       ok: true,
       AllProducts,
     });
-  } catch(error) {
+  } catch (error) {
     res.status(500).json({
       ok: false,
       msg: error,
     });
-  } 
+  }
 };
 const getProducto = async (req, res) => {
   try {
@@ -39,22 +39,22 @@ const getProducto = async (req, res) => {
 const updateProducto = async (req, res) => {
   try {
     const id = req.body.id;
-    
+
     const productoUpdate = req.body;
     await producto.update({
-      nombre:productoUpdate.nombre
-      ,descripcion:productoUpdate.descripcion
-      ,precio:productoUpdate.precio
-      ,cantidad: productoUpdate.cantidad
-      ,inventario: productoUpdate.inventario
-      ,categoria: productoUpdate.categoria
-      ,rating: productoUpdate.rating
+      nombre: productoUpdate.nombre
+      , descripcion: productoUpdate.descripcion
+      , precio: productoUpdate.precio
+      , cantidad: productoUpdate.cantidad
+      , inventario: productoUpdate.inventario
+      , categoria: productoUpdate.categoria
+      , rating: productoUpdate.rating
     },
-    {
-      where: {
+      {
+        where: {
           id: id
-      }
-  });
+        }
+      });
     res.json({
       ok: true,
       msg: "Producto actualizado",
@@ -88,67 +88,100 @@ const deleteProducto = async (req, res) => {
     });
   }
 };
+
+const uploadImage = async (req, res) => {
+
+  const file = req.file;
+  const id = req.params.id;
+
+  multer({
+    destination: function (req, file, cb) {
+      cb(null, 'public/images/productos')
+    },
+    filename: function (req, file, cb) {
+      const mimeExtension = {
+        'image/jpeg': '.jpeg',
+        'image/jpg': '.jpg',
+        'image/png': '.png',
+        'image/gif': '.gif',
+      }
+      cb(null, file.originalname);
+    }
+  }).single('imagen');
+
+  if (file) {
+    console.log(file)
+    await producto.update({ imagen: file.filename }, {
+      where: {
+        id: id
+      }
+    })
+    res.json('Imagen subida con exito')
+  } else {
+    throw new Error('Archivo no subido')
+  }
+
+};
+
 const createProducto = async (req, res) => {
   try {
-    //console.log(req)
     const body = req.body;
-    
-    //const file = req.file
-    console.log(req.body)
-  
+
     let nuevoProducto = await producto.create(
       {
-        nombre:body.nombre,
-        descripcion:body.descripcion,
-        precio:body.precio,
-        inventario:body.inventario,
-        categoria:body.categoria,
-        imagen:body.url,
-        rating:body.rating
+        nombre: body.nombre,
+        descripcion: body.descripcion,
+        precio: body.precio,
+        inventario: body.inventario,
+        categoria: body.categoria,
+        imagen: '',
+        rating: body.rating,
+        createdAt: new Date().toISOString()
       },
     );
-      res.json({
-        ok: true,
-        msg: "Producto creado",
-        nuevoProducto
-      });
-      //console.log(nuevoProducto);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json('Error al crear producto ' + error)
+    res.json({
+      ok: true,
+      msg: "Producto creado",
+      nuevoProducto
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json('Error al crear producto ' + error)
 
   }
-  };
+};
+
+
 
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, 'public/images/productos')
+    cb(null, 'public/images/productos')
   },
   filename: function (req, file, cb) {
-      const mimeExtension = {
-          'image/jpeg': '.jpeg',
-          'image/jpg': '.jpg',
-          'image/png': '.png',
-          'image/gif': '.gif',
-      }
-      cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
-
+    const mimeExtension = {
+      'image/jpeg': '.jpeg',
+      'image/jpg': '.jpg',
+      'image/png': '.png',
+      'image/gif': '.gif',
+    }
+    cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
   }
 })
 const uploadAvatar = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
 
-      if(file.mimetype === 'image/jpeg' || 
-      file.mimetype === 'image/jpg' || 
+    if (file.mimetype === 'image/jpeg' ||
+      file.mimetype === 'image/jpg' ||
       file.mimetype === 'image/png' ||
       file.mimetype === 'image/gif') {
-          cb(null, true);
-      } else {
-          cb(null, false);
-          req.fileError = 'File format is not valid';
-      }
+      cb(null, true);
+    } else {
+      cb(null, false);
+      req.fileError = 'File format is not valid';
+    }
   }
 })
 
@@ -158,5 +191,6 @@ module.exports = {
   updateProducto,
   deleteProducto,
   createProducto,
-  uploadAvatar
+  uploadAvatar,
+  uploadImage
 };

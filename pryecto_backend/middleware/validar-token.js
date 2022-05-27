@@ -3,17 +3,14 @@ const tokenConfig = require('../helpers/auth');
 const usuario = require("../models/usuario");
 
 const token = async (req, res,next) => {
-console.log(req.headers);
+
 if ( !req.headers.authorization){
     res.status(401).json({msg:"Acceso no autorizado"})
 }else {
     let token = req.headers.authorization.slice(7);
-    console.log(token);
-
     jwt.verify(token, tokenConfig.secret, ( err, decoded) =>{
         if(err){ throwres.status(500).json({msg:"Token no valido", err})
     }else{
-        console.log(decoded);
         next()
     }
     })

@@ -6,7 +6,7 @@ export class Product {
     cantidad?:number;
     inventario?:string;
     categoria?:string;
-    imagen?:string;
+    imagen?:FormData;
     rating?:number;
     url?:string;
 }

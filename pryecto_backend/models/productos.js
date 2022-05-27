@@ -35,7 +35,7 @@ const pedido = require('../models/pedidos');
     },
     
   },{
-    timestamps: false,
+    timestamps:false,
     freezeTableName: true
   });
 //producto.belongsToMany(pedido, { through: 'pedido_producto', as: 'productoId' }); 
