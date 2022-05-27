@@ -12,29 +12,44 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class RegisterComponent implements OnInit {
 
   usario:Usuario[]=[];
-  public registerForm!:FormGroup
+  imgName: any;
 
+  public registerForm = new FormGroup({
+    nombre:new FormControl('',Validators.required),
+    email:new FormControl('',Validators.required),
+    password:new FormControl('',Validators.required),
+  }); 
 
 
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
-
-     this.registerForm = new FormGroup({
-      nombre:new FormControl('',Validators.required),
-      email:new FormControl('',Validators.required),
-      password:new FormControl('',Validators.required),
-    }); 
   }
 
-   crearUser(){
-  return this.authService.crearUsuario(this.registerForm.value)
-  .subscribe(resp=>{
-    this.router.navigateByUrl('/login');
-    console.log('Usuario Registrado');
-    console.log(resp);
-  })
 
+
+  capturarFile(event: any) {
+    this.imgName = event.currentFiles[0];
+    console.log(this.imgName)
+  }
+  
+   crearUser(){
+    const formData = new FormData();
+    formData.append('imagen', this.imgName);
+
+    const usuario: Usuario = {
+      nombre: this.registerForm.get('nombre')?.value,
+      email: this.registerForm.get('email')?.value,
+      password: this.registerForm.get('password')?.value,
+    }
+
+    this.authService.crearUsuario(usuario).subscribe((resp)=>{
+    this.authService.uploadImg(formData, resp.crearUser.id).subscribe(() => {
+      this.router.navigateByUrl('/login');
+      console.log('Usuario Registrado');
+      console.log(resp);
+    })
+  })
     } 
   }
 

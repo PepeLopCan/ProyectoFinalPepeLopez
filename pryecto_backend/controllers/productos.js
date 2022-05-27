@@ -92,7 +92,7 @@ const deleteProducto = async (req, res) => {
 
 
 
-const uploadImage = async (req, res) => {
+/* const uploadImage = async (req, res) => {
    multer({
     destination: function (req, file, cb) {
       cb(null, 'public/images/productos')
@@ -122,7 +122,7 @@ const uploadImage = async (req, res) => {
     throw new Error('Archivo no subido')
   }
 
-};
+}; */
 
  
 const createProducto = async (req, res) => {
@@ -205,6 +205,5 @@ module.exports = {
   updateProducto,
   deleteProducto,
   createProducto,
-  uploadImage,
   upload
 };

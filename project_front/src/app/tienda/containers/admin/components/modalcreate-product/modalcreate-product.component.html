@@ -1,7 +1,5 @@
 <form [formGroup]="crearProducto">
      <div class="field">
-   <!--   <input type="file"
-    id="avatar" name="avatar" (onSelect)="capturarFile($event)">  -->
     <p-fileUpload #fubauto mode="basic" name="demo[]"  accept="image/*" (onSelect)="capturarFile($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
     </div>  
 <div class="field">

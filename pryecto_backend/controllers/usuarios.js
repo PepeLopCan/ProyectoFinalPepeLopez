@@ -107,7 +107,7 @@ const createUser = async (req, res) => {
       nombre:nombre,
       email: email,
       password:password,
-      //imagen: req.file.filename,
+      imagen:'',
       rol:rol
     });
 
@@ -123,48 +123,24 @@ const createUser = async (req, res) => {
     });
   }
 };
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, 'public/images/usuarios')
+    cb(null, 'public/images/usuarios')
   },
   filename: function (req, file, cb) {
-      const mimeExtension = {
-          'image/jpeg': '.jpeg',
-          'image/jpg': '.jpg',
-          'image/png': '.png',
-          'image/gif': '.gif',
-      }
-      cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
-  }
-})
-const uploadAvatar = multer({
-  storage: storage,
-  fileFilter: (req, file, cb) => {
-      console.log(file.mimetype)
-      if(file.mimetype === 'image/jpeg' || 
-      file.mimetype === 'image/jpg' || 
-      file.mimetype === 'image/png' ||
-      file.mimetype === 'image/gif') {
-          cb(null, true);
-      } else {
-          cb(null, false);
-          req.fileError = 'File format is not valid';
-      }
+    const mimeExtension = {
+      'image/jpeg': '.jpeg',
+      'image/jpg': '.jpg',
+      'image/png': '.png',
+      'image/gif': '.gif',
+    }
+    cb(null, file.fieldname + '-' + Date.now() + mimeExtension[file.mimetype]);
   }
 })
 
+var upload = multer({ storage: storage })
 
-const mostrarPedidos = async (req, res) => {
-
-  const idUsuario = req.params;
-  console.log(idUsuario);
-  const data = await pedido.findAll({
-  
-    where: { usuarioId:idUsuario.id}
-  })
-
-  res.status(200).send(data)
-}
 
 
 
@@ -177,8 +153,6 @@ module.exports = {
   updateUser,
   deleteUser,
   createUser,
-  uploadAvatar,
-  mostrarPedidos
-  
-  
+  upload
+
 };
