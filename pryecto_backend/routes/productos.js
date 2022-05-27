@@ -10,5 +10,6 @@ router.get('/miProducto/:id',token, getProducto);
 router.post('/create/:id',token, ValiarAdmin_Role, createProducto);
 router.put('/update/:id',token,ValiarAdmin_Role, updateProducto);
 router.delete('/delete/:id',token,ValiarAdmin_Role ,deleteProducto);
+router.post('/upload/:id',token,ValiarAdmin_Role,uploadImage)
 
-module.exports = router;
+module.exports = router; 

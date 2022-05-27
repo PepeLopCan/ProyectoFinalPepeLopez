@@ -26,6 +26,7 @@ const pedidos = require('./pedidos');
       type: DataTypes.STRING,
     }
   },{
+    timestamps:false,
     freezeTableName: true
   });
 
